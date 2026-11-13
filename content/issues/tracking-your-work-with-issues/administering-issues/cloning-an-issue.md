@@ -2,7 +2,9 @@
 title: Cloning an issue
 intro: 'To quickly create a similar issue, you can clone an existing open issue into the same repository or a different one.'
 versions:
-  feature: duplicating-an-issue
+  fpt: '*'
+  ghec: '*'
+  ghes: '*'
 shortTitle: Clone an issue
 redirect_from:
   - /issues/tracking-your-work-with-issues/administering-issues/duplicating-an-issue
@@ -29,4 +31,4 @@ People or teams mentioned in the original issue will not receive notifications a
 
 ## Further reading
 
-* [AUTOTITLE](/issues/tracking-your-work-with-issues/about-issues)
+* [AUTOTITLE](/issues/tracking-your-work-with-issues/learning-about-issues/about-issues)

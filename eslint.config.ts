@@ -46,6 +46,8 @@ export default [
         typescript: true,
         node: true,
       },
+      // Maps Primer components to DOM elements for the github and jsx-a11y rules
+      ...primerReact.configs.recommended.settings,
     },
     plugins: {
       github,
@@ -72,6 +74,10 @@ export default [
 
       // TypeScript ESLint recommended rules
       ...tseslint.configs.recommended.rules,
+
+      // Primer React recommended extends plugin:github/react, which flat config does not apply.
+      // Keep before jsx-a11y recommended so its jsx-a11y rule settings win, as in the eslintrc extends order.
+      ...github.getFlatConfigs().react.rules,
 
       // Primer React recommended rules
       ...primerReact.configs.recommended.rules,
@@ -102,6 +108,10 @@ export default [
 
       // Custom rules
       'custom-rules/use-custom-logger': 'error',
+
+      // Disallow dangerouslySetInnerHTML; render trusted HTML via RenderedHTML /
+      // renderHTMLString or a hast tree instead (github/docs-engineering#6619).
+      'custom-rules/no-dangerously-set-inner-html': 'error',
 
       // Prevent direct res.redirect() usage — use res.safeRedirect() instead
       // to avoid open redirect vulnerabilities via protocol-relative URLs.
@@ -184,7 +194,6 @@ export default [
   // Remove directories from this list as they are migrated
   {
     files: [
-      'src/ai-tools/**/*.{ts,js}',
       'src/article-api/**/*.{ts,js}',
       'src/audit-logs/**/*.{ts,js}',
       'src/color-schemes/**/*.{ts,js}',
@@ -192,7 +201,6 @@ export default [
       'src/events/components/**/*.{ts,js}',
       'src/fixtures/**/*.{ts,js}',
       'src/journeys/**/*.{ts,js}',
-      'src/metrics/**/*.{ts,js}',
       'src/observability/lib/handle-package-not-found.ts',
     ],
     rules: {
@@ -231,14 +239,27 @@ export default [
     },
   },
 
-  // Legacy files with @typescript-eslint/no-explicit-any violations (see github/docs-engineering#5797)
+  // Allow role="list" on list-style:none <ul>/<ol> elements in these components.
+  // Chromium drops the implicit `list`/`listitem` roles from the accessibility tree
+  // when list-style:none is set, so NVDA/JAWS lose list semantics and the item count;
+  // role="list" on the <ul>/<ol> and role="listitem" on each <li> restore them and are not
+  // actually redundant here. See github/accessibility-audits#16815.
   {
     files: [
-      'src/article-api/transformers/rest-transformer.ts',
-      'src/frame/components/context/MainContext.tsx',
+      'src/frame/components/ui/MiniTocs/MiniTocs.tsx',
+      'src/landings/components/TableOfContents.tsx',
+      'src/frame/components/GenericError.tsx',
+      'src/frame/components/page-footer/LegalFooter.tsx',
+      'src/landings/components/ProductSelectionCard.tsx',
+      'src/release-notes/components/GHESReleaseNotes.tsx',
+      'src/landings/components/journey/JourneyLearningTracks.tsx',
+      'src/frame/components/ui/UnderlineNav/UnderlineNav.tsx',
     ],
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
+      'jsx-a11y/no-redundant-roles': [
+        'error',
+        { nav: ['navigation'], ul: ['list'], ol: ['list'], li: ['listitem'] },
+      ],
     },
   },
 

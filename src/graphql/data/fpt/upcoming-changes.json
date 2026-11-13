@@ -1,4 +1,22 @@
 {
+  "2027-04-01": [
+    {
+      "location": "RepositoryPermission.TRIAGE_PLUS",
+      "description": "<p><code>TRIAGE_PLUS</code> will be removed. Use MODERATE instead.</p>",
+      "reason": "<p>TRIAGE_PLUS has been renamed to MODERATE.</p>",
+      "date": "2027-04-01",
+      "criticality": "breaking",
+      "owner": "corannejuang"
+    },
+    {
+      "location": "IssueFieldVisibility.ORG_ONLY",
+      "description": "<p><code>ORG_ONLY</code> will be removed. Use <code>RESTRICTED</code> instead.</p>",
+      "reason": "<p><code>ORG_ONLY</code> will be removed.</p>",
+      "date": "2027-04-01",
+      "criticality": "breaking",
+      "owner": "dewski"
+    }
+  ],
   "2027-01-01": [
     {
       "location": "CheckAnnotation.databaseId",
@@ -25,6 +43,14 @@
       "date": "2026-10-01",
       "criticality": "breaking",
       "owner": "github/client-apps-platform"
+    },
+    {
+      "location": "CopilotAgentTask.type",
+      "description": "<p><code>type</code> will be removed. Use <code>codingAgentFilter</code> and <code>codingAgentTypeFilter</code> instead.</p>",
+      "reason": "<p><code>type</code> will be removed.</p>",
+      "date": "2026-10-01",
+      "criticality": "breaking",
+      "owner": "github/copilot-mission-control"
     }
   ],
   "2026-07-01": [

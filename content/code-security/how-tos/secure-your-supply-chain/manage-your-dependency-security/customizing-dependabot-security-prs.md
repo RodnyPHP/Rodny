@@ -19,8 +19,8 @@ category:
 
 If you haven't yet configured a `dependabot.yml` file for your repository and you want to customize pull requests for security updates, you must first:
 
-1. Check in a `dependabot.yml` file into the `.github` directory of your repository. For more information, see [AUTOTITLE](/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates#enabling-dependabot-version-updates).
-1. Set all the required keys. For more information, see [Required keys](/code-security/dependabot/working-with-dependabot/dependabot-options-reference#required-keys).
+1. Check in a `dependabot.yml` file into the `.github` directory of your repository. For more information, see [AUTOTITLE](/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/configure-version-updates#enabling-dependabot-version-updates).
+1. Set all the required keys. For more information, see [Required keys](/code-security/reference/supply-chain-security/dependabot-options-reference#required-keys).
 1. If you want the customization for a package ecosystem to **only apply to security updates** (and exclude version updates), set the `open-pull-requests-limit` key to `0`.
 
 You can then consider what your needs and priorities are for security updates, and apply a combination of the customization options outlined below.
@@ -29,65 +29,48 @@ You can then consider what your needs and priorities are for security updates, a
 
 To create a more **targeted review process** that prioritizes meaningful updates, use `groups` to combine security updates for multiple dependencies into a single pull request.
 
-For detailed guidance, see [Prioritizing meaningful updates](/code-security/dependabot/dependabot-version-updates/optimizing-pr-creation-version-updates#prioritizing-meaningful-updates).
-
-{% ifversion dependabot-reviewers-deprecation %}
+For detailed guidance, see [Prioritizing meaningful updates](/code-security/tutorials/secure-your-dependencies/optimizing-pr-creation-version-updates#prioritizing-meaningful-updates).
 
 ## Automatically adding assignees
 
 Use `assignees` to automatically add individuals or teams as assignees to pull requests.
 
-For detailed guidance, see [Automatically adding assignees](/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs#automatically-adding-assignees).
+For detailed guidance, see [Automatically adding assignees](/code-security/tutorials/secure-your-dependencies/customizing-dependabot-prs#automatically-adding-assignees).
 
 ## Automatically adding reviewers
 
 To ensure your project's security updates get addressed promptly by the appropriate team, you can automatically add reviewers to Dependabot pull requests using a CODEOWNERS file. See [AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
 
-{% else %}
-
-## Automatically adding reviewers and assignees
-
-> [!IMPORTANT]
-> The `reviewers` property is closing down and will be removed in a future release of {% data variables.product.prodname_ghe_server %}.
->
-> You can also automatically add reviewers and assignees using a CODEOWNERS file. See [AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
-
-To ensure your project's security updates get **addressed promptly** by the appropriate team, use `reviewers` and `assignees` to automatically add individuals or teams as **reviewers or assignees** to pull requests.
-
-For detailed guidance, see [Automatically adding reviewers and assignees](/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs#automatically-adding-reviewers-and-assignees).
-
-{% endif %}
-
 ## Labeling pull requests with custom labels
 
 To **prioritize** specific pull requests, or integrate them into CI/CD pipelines, use `labels` to apply your own **custom labels** to each pull request.
 
-For detailed guidance, see [Labeling pull requests with custom labels](/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs#labeling-pull-requests-with-custom-labels).
+For detailed guidance, see [Labeling pull requests with custom labels](/code-security/tutorials/secure-your-dependencies/customizing-dependabot-prs#labeling-pull-requests-with-custom-labels).
 
 ## Adding a prefix to commit messages
 
 To **integrate** with automations that process commit messages or pull requests titles, use `commit-message` to specify the prefix that you want for commit messages and pull request titles.
 
-For detailed guidance, see [Adding a prefix to commit messages](/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs#adding-a-prefix-to-commit-messages).
+For detailed guidance, see [Adding a prefix to commit messages](/code-security/tutorials/secure-your-dependencies/customizing-dependabot-prs#adding-a-prefix-to-commit-messages).
 
 ## Associating pull requests with a milestone
 
 To **track progress** towards a project goal or release, use `milestone` to associate {% data variables.product.prodname_dependabot %}'s pull requests with a milestone.
 
-For detailed guidance, see [Associating pull requests with a milestone](/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs#associating-pull-requests-with-a-milestone).
+For detailed guidance, see [Associating pull requests with a milestone](/code-security/tutorials/secure-your-dependencies/customizing-dependabot-prs#associating-pull-requests-with-a-milestone).
 
-## Changing the separator in the pull request branch name
+## Customizing pull request branch names
 
-To ensure your **branch names align** with your team's existing conventions, use `pull-request-branch-name.separator` to specify the separator you want {% data variables.product.prodname_dependabot %} to use for branch names.
+To ensure your **branch names align** with your team's existing conventions, use `pull-request-branch-name` to customize how {% data variables.product.prodname_dependabot %} generates branch names—including the separator, prefix, length, casing, and format.
 
-For detailed guidance, see [Changing the separator in the pull request branch name](/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs#changing-the-separator-in-the-pull-request-branch-name).
+For detailed guidance, see [Customizing pull request branch names](/code-security/tutorials/secure-your-dependencies/customizing-dependabot-prs#customizing-pull-request-branch-names).
 
 ## Example 1: configuration for security updates only
 
 In this example, the `dependabot.yml` file:
 * Uses a private registry for updates to npm dependencies.
 * Disables version updates for dependencies, so that any customizations apply to security updates only.
-* Is customized so that {% data variables.product.prodname_dependabot %} applies custom labels to the pull requests and automatically adds {% ifversion ghes < 3.19 %}reviewers and {% endif %}assignees.
+* Is customized so that {% data variables.product.prodname_dependabot %} applies custom labels to the pull requests and automatically adds assignees.
 * Groups security updates for golang dependencies into a single pull request.
 
 ```yaml copy
@@ -175,5 +158,5 @@ updates:
 
 ## Further reading
 
-* [AUTOTITLE](/code-security/dependabot/working-with-dependabot/dependabot-options-reference)
-* [AUTOTITLE](/code-security/dependabot/working-with-dependabot/configuring-access-to-private-registries-for-dependabot)
+* [AUTOTITLE](/code-security/reference/supply-chain-security/dependabot-options-reference)
+* [AUTOTITLE](/code-security/how-tos/secure-your-supply-chain/manage-your-dependency-security/configure-access-to-private-registries)

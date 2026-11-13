@@ -7,6 +7,8 @@ intro: >-
 versions:
   fpt: '*'
   ghec: '*'
+redirect_from:
+  - /copilot/how-tos/copilot-sdk/troubleshooting/sdk-and-cli-compatibility
 contentType: how-tos
 ---
 
@@ -44,6 +46,7 @@ The Copilot SDK communicates with the CLI via JSON-RPC protocol. Features must b
 | Abort | `abort()` | Cancel in-flight request |
 | **Tools** | | |
 | Register custom tools | `registerTools()` | Full JSON Schema support |
+| Replace custom tools (mid-session) | `session.setTools()` | Experimental; see [AUTOTITLE](/copilot/how-tos/copilot-sdk/features/changing-tools) |
 | Tool permission control | `onPreToolUse` hook | Allow/deny/ask |
 | Tool result modification | `onPostToolUse` hook | Transform results |
 | Available/excluded tools | `availableTools`, `excludedTools` config | Filter tools |
@@ -88,19 +91,24 @@ The Copilot SDK communicates with the CLI via JSON-RPC protocol. Features must b
 | System message | `systemMessage` config | Append or replace |
 | Custom provider | `provider` config | BYOK support |
 | Infinite sessions | `infiniteSessions` config | Auto-compaction |
-| Permission handler | `onPermissionRequest` | Approve/deny requests |
+| Permission handler | `onPermissionRequest` | Approve/deny; `decisionContext.userFeedback` collects explanations only in restricted telemetry |
 | User input handler | `onUserInputRequest` | Handle ask_user |
 | Skills | `skillDirectories` config | Custom skills |
 | Disabled skills | `disabledSkills` config | Disable specific skills |
 | Config directory | `configDir` config | Override default config location |
 | Client name | `clientName` config | Identify app in User-Agent |
 | Working directory | `workingDirectory` config | Set session cwd |
+| Additional directories | `additionalDirectories` config | Grant session access beyond the working directory; re-supply on resume |
+| Copilot Memory | `memory: { enabled: true }` | Enable persistent memory when creating or resuming a session. The runtime retrieves memories and requests permission for memory writes. The SDK does not provide direct memory management APIs. |
 | **Experimental** | | |
 | Agent management | `session.rpc.agent.*` | List, select, deselect, get current agent |
 | Fleet mode | `session.rpc.fleet.start()` | Parallel sub-agent execution; see [AUTOTITLE](/copilot/how-tos/copilot-sdk/features/fleet-mode) |
 | Manual compaction | `session.rpc.history.compact()` | Trigger compaction on demand |
+| Context clearing | `session.rpc.history.clearContext()` | Replace conversation context from a terminal tool |
 | History truncation | `session.rpc.history.truncate()` | Remove events from a point onward |
 | Session forking | `server.rpc.sessions.fork()` | Fork a session at a point in history |
+
+For predictable {% data variables.copilot.copilot_memory %} behavior, set `memory.enabled` explicitly. If you omit the setting in `copilot-cli` mode, the runtime default applies. If you omit it in `empty` mode, {% data variables.copilot.copilot_memory %} is disabled.
 
 ### ❌ Not available in SDK (CLI-only)
 
@@ -167,7 +175,9 @@ The Copilot SDK communicates with the CLI via JSON-RPC protocol. Features must b
 | **Development** | | |
 | Toggle experimental | `/experimental`, `--experimental` | Runtime flag |
 | Custom instructions control | `--no-custom-instructions` | CLI flag |
+| Diagnose session | `/diagnose` | TUI command |
 | View/manage instructions | `/instructions` | TUI command |
+| Collect debug logs | `/collect-debug-logs` | Diagnostic tool |
 | Reindex workspace | `/reindex` | TUI command |
 | IDE integration | `/ide` | IDE-specific workflow |
 | **Non-interactive Mode** | | |
@@ -302,7 +312,7 @@ console.log("Protocol version:", status.protocolVersion);
 
 ## See also
 
-* [AUTOTITLE](/copilot/how-tos/copilot-sdk/getting-started)
+* [AUTOTITLE](/copilot/get-started/sdk-quickstart)
 * [AUTOTITLE](/copilot/how-tos/copilot-sdk/hooks/hooks-overview)
 * [AUTOTITLE](/copilot/how-tos/copilot-sdk/features/mcp)
 * [AUTOTITLE](/copilot/how-tos/copilot-sdk/troubleshooting/debugging)

@@ -13,15 +13,21 @@ category:
 
 ## About the {% data variables.product.github %} integration for Teams
 
-The {% data variables.product.github %} integration for Microsoft Teams gives you and your teams visibility into your {% data variables.product.github %} projects directly in Teams channels. You can triage issues, collaborate on pull requests, and keep track of changes without leaving Teams.
+The {% data variables.product.github %} integration for Microsoft Teams gives you and your teams visibility into your {% data variables.product.github %} projects directly in Teams channels. You can {% ifversion copilot %}work with {% data variables.copilot.copilot_cloud_agent %} to research, plan and triage in conversations, create artifacts such as issues and pull requests, start and steer agent sessions,{% else %}triage issues, collaborate on pull requests, {% endif %} and keep track of changes without leaving Teams.
 
 With the {% data variables.product.github %} integration for Teams, you can:
 
 * Get **{% data variables.product.github %} notifications** in Teams channels.
 * Use **commands** to take actions on {% data variables.product.github %}.
 * See **previews** when sharing links to {% data variables.product.github %} resources.
-{% ifversion fpt or ghec %}
-* Initiate a {% data variables.copilot.copilot_cloud_agent %} session from Teams, using the context of a Teams thread.
+
+{% ifversion copilot %}
+
+* **Delegate tasks to {% data variables.product.prodname_copilot_short %}** by replying to a notification and @mentioning {% data variables.product.github %}.
+* **Initiate and steer {% data variables.copilot.copilot_cloud_agent %} sessions** in a conversation. Teammates can collaborate with each other and the agent, add context, correct assumptions, continue an agent task, and review the resulting plan, issues, pull requests and other artifacts. You can also choose a model, connect MCP servers, and work across multiple repositories in a single session. You can follow the plan, changes, and pull request in a canvas without leaving Teams. {% data variables.copilot.copilot_memory %} can retain context across sessions and is in {% data variables.release-phases.public_preview %}.
+
+The combined **{% data variables.product.github %}** app includes repository notifications and {% data variables.product.prodname_copilot_short %}. If you already use **{% data variables.product.github %} Notifications**, update it to the combined app. Your existing subscriptions and scheduled reminders are preserved.
+
 {% endif %}
 
 {% data reusables.integrations.github-teams-permissions %}
@@ -33,14 +39,31 @@ To use the {% data variables.product.github %} integration for Teams, you need:
 * A {% data variables.product.github %} account.
 * A Teams workspace where you have permission to install apps.
 
-{% ifversion not ghes %}
+{% ifversion copilot %}
+
+{% data reusables.copilot.cloud-agent.cloud-sandboxes-prerequisite-teams %}
+
+{% endif %}
+
+{% ifversion fpt or ghec %}
 
 ## Installing the {% data variables.product.github %} integration for Teams in a single workspace
 
 1. Go to the [{% data variables.product.github %} integration for Teams](https://teams.microsoft.com/l/app/ca9e26b7-dce5-44a0-b2b7-a70a3d65ce25) listing in the Teams app store.
 1. Click **Add**.
 1. Follow the prompts to sign in to Teams and approve access.
-1. In Teams, run `@GitHub Notifications signin` and follow the prompts to connect your {% data variables.product.github %} account.
+1. In a Teams message or channel, @mention the app by typing `@{% data variables.product.github %}` and follow the prompts to connect your {% data variables.product.github %} account.
+1. To see what else you can do, in the thread, @mention the app by typing `@{% data variables.product.github %} help`.
+
+### Choosing what to configure next
+
+* To receive repository events, use `@{% data variables.product.github %} subscribe OWNER/REPO`. See [AUTOTITLE](/integrations/how-tos/teams/customize-notifications).
+{% ifversion copilot %}
+* To choose default repositories for a channel, use `@{% data variables.product.github %} settings`.
+* To start a task, mention `@{% data variables.product.github %}` and describe the work. In a personal chat, name the repositories in your prompt.
+
+Notification subscriptions, review reminders, and {% data variables.product.prodname_copilot_short %} repository settings are separate. For multi-repository sessions, models, MCP servers, and {% data variables.copilot.copilot_memory %}, see [AUTOTITLE](/copilot/how-tos/copilot-integrations/integrate-cloud-agent-with-teams).
+{% endif %}
 
 {% ifversion ghec %}
 
@@ -99,3 +122,6 @@ To integrate {% data variables.product.prodname_ghe_server %} with Microsoft Tea
 
 * [AUTOTITLE](/integrations/how-tos/teams/use-github-in-teams) - Learn how to use the {% data variables.product.github %} integration for Teams.
 * [AUTOTITLE](/integrations/how-tos/teams/customize-notifications) - Learn how to customize your {% data variables.product.github %} notifications in Teams.
+{% ifversion copilot %}
+* [AUTOTITLE](/copilot/how-tos/copilot-integrations/integrate-cloud-agent-with-teams) - Learn about {% data variables.copilot.copilot_cloud_agent %} with Teams.
+{% endif %}

@@ -21,7 +21,7 @@ category:
 
 {% data reusables.dependabot.enterprise-enable-dependabot %}
 
-Your repository's {% data variables.product.prodname_dependabot %} tab lists all open and closed {% data variables.product.prodname_dependabot_alerts %} and corresponding {% data variables.product.prodname_dependabot_security_updates %}. You can filter alerts by package, ecosystem, or manifest. You can sort the list of alerts, and you can click into specific alerts for more details. You can also dismiss or reopen alerts, either one by one or by selecting multiple alerts at once. For more information, see [AUTOTITLE](/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).
+Your repository's {% data variables.product.prodname_dependabot %} tab lists all open and closed {% data variables.product.prodname_dependabot_alerts %} and corresponding {% data variables.product.prodname_dependabot_security_updates %}. You can filter alerts by package, ecosystem, or manifest. You can sort the list of alerts, and you can click into specific alerts for more details. You can also dismiss or reopen alerts, either one by one or by selecting multiple alerts at once. For more information, see [AUTOTITLE](/code-security/concepts/supply-chain-security/dependabot-alerts).
 
 ## About updates for vulnerable dependencies in your repository
 
@@ -29,13 +29,19 @@ Each {% data variables.product.prodname_dependabot %} alert has a unique numeric
 
 You can filter and sort {% data variables.product.prodname_dependabot_alerts %} using a variety of filters and sort options available on the user interface. For more information, see [Viewing and prioritizing {% data variables.product.prodname_dependabot_alerts %}](#viewing-and-prioritizing-dependabot-alerts) below.
 
-You can also audit actions taken in response to {% data variables.product.prodname_dependabot %} alerts. For more information, see [AUTOTITLE](/code-security/getting-started/auditing-security-alerts).
+You can also audit actions taken in response to {% data variables.product.prodname_dependabot %} alerts. For more information, see [AUTOTITLE](/code-security/concepts/security-at-scale/audit-security-alerts).
 
 ## Viewing and prioritizing {% data variables.product.prodname_dependabot_alerts %}
 
 You can view, sort, and filter {% data variables.product.prodname_dependabot_alerts %} to focus on the alerts that matter most.
 
 By default, alerts are sorted by **Most important**, which helps you prioritize fixes based on factors such as potential impact, actionability, and relevance. This prioritization is continuously improved and considers signals like CVSS score, dependency scope, and whether vulnerable function calls are detected.
+
+{% ifversion dependabot-reachability %}
+
+When {% data variables.product.prodname_dependabot_reachability %} is enabled, **Most important** ranks alerts marked "Reachable," "Potentially reachable," or "Reachability unavailable" higher. Only alerts marked "Unreachable" are deprioritized. To enable analysis for your repository, see [AUTOTITLE](/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/configure-reachability-analysis).
+
+{% endif %}
 
 {% data reusables.dependabot.where-to-view-dependabot-alerts %}
 
@@ -52,9 +58,16 @@ When you assign an alert to an AI agent, the agent automatically creates a sessi
 1. Optionally, refine the list of alerts:
    * Use the dropdown menus at the top of the list to sort or filter alerts.
 
+     {% ifversion dependabot-reachability %}
+     ![Screenshot of the filter and sort menus in the {% data variables.product.prodname_dependabot %} tab.](/assets/images/help/graphs/dependabot-alerts-filters-checkbox-with-reachability.png)
+     {% else %}
      ![Screenshot of the filter and sort menus in the {% data variables.product.prodname_dependabot %} tab.](/assets/images/help/graphs/dependabot-alerts-filters-checkbox.png)
+     {% endif %}
 
    * Type directly in the search bar to filter alerts, including full-text search across alert details and related security advisories.
+   {% ifversion dependabot-reachability %}
+   * If {% data variables.product.prodname_dependabot_reachability %} is enabled, use the **Reachability** dropdown menu to filter by verdict. Analysis currently supports JavaScript and TypeScript dependencies. For example, select "Reachable" and "Potentially reachable", or type `reachability:reachable,potentially-reachable` in the search bar.
+   {% endif %}
    * Click a label on an alert to automatically filter the list by that label.
    * To identify alerts that affect development dependencies, filter by the `scope:development` filter or look for alerts labeled "Development". This can help you prioritize alerts that affect production dependencies first.
 
@@ -75,14 +88,19 @@ When you assign an alert to an AI agent, the agent automatically creates a sessi
    * Select a custom agent you have configured (recommended for specialized tasks).
 {% endif %}
 
-1. Optionally, to suggest an improvement to the related security advisory, on the right-hand side of the alert details page, click **Suggest improvements for this advisory on the {% data variables.product.prodname_advisory_database %}**. See [AUTOTITLE](/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/editing-security-advisories-in-the-github-advisory-database).
+1. Optionally, to suggest an improvement to the related security advisory, on the right-hand side of the alert details page, click **Suggest improvements for this advisory on the {% data variables.product.prodname_advisory_database %}**. See [AUTOTITLE](/code-security/how-tos/report-and-fix-vulnerabilities/fix-reported-vulnerabilities/edit-advisory-database).
 
 ### Tips for prioritizing alerts
 
 * Use the **Most important** sort order to focus on alerts with the highest potential impact.
+{% ifversion dependabot-reachability %}
+* Prioritize alerts labeled "Reachable" or "Potentially reachable", considering severity, EPSS, dependency scope, and dependency relationship alongside reachability.
+* Give "Unreachable" alerts a lower priority, but do not dismiss them solely because of that verdict. Results can change as your code or the advisory changes.
+* For "Reachability unavailable" results, use the other prioritization signals. An unavailable result does not mean the vulnerable function cannot be called.
+{% endif %}
 * Prioritize alerts that affect production dependencies over development dependencies.{% ifversion dependabot-alerts-assignees %}
 * Use the **Assignees** feature to clarify who is responsible for addressing each alert, so your team can track and remediate vulnerabilities more effectively.{% endif %}
-* Use {% data variables.dependabot.auto_triage_rules %} to automatically prioritize or manage alerts. See [AUTOTITLE](/code-security/concepts/supply-chain-security/about-dependabot-auto-triage-rules).
+* Use {% data variables.dependabot.auto_triage_rules %} to automatically prioritize or manage alerts. See [AUTOTITLE](/code-security/concepts/supply-chain-security/dependabot-auto-triage-rules).
 
 For more information about supported ecosystems and manifest files for dependency scope, see [AUTOTITLE](/code-security/reference/supply-chain-security/supported-ecosystems-and-manifests-for-dependency-scope).
 
@@ -94,11 +112,29 @@ To retrieve alerts programmatically, see the [AUTOTITLE](/rest/dependabot/alerts
 
 {% ifversion copilot-chat-ghas-alerts %}
 
-With a {% data variables.copilot.copilot_enterprise %} license, you can also ask {% data variables.copilot.copilot_chat %} for help to better understand {% data variables.product.prodname_dependabot_alerts %} in repositories in your organization. For more information, see [AUTOTITLE](/copilot/using-github-copilot/asking-github-copilot-questions-in-githubcom#asking-questions-about-alerts-from-github-advanced-security-features).
+With a {% data variables.copilot.copilot_enterprise %} license, you can also ask {% data variables.copilot.copilot_chat %} for help to better understand {% data variables.product.prodname_dependabot_alerts %} in repositories in your organization. For more information, see [AUTOTITLE](/copilot/how-tos/copilot-on-github/chat-with-copilot/get-started-with-chat#security-alert-questions).
 
 {% endif %}
 
 You can review the details of a {% data variables.product.prodname_dependabot %} alert to understand the vulnerability and how to fix it.
+
+{% ifversion dependabot-reachability %}
+
+### Reviewing reachability evidence
+
+> [!NOTE]
+> {% data reusables.dependabot.reachability-public-preview %} {% data variables.product.prodname_dependabot_reachability_caps %} supports JavaScript repositories that use npm, pnpm, or Yarn, and TypeScript repositories.
+
+{% data variables.product.prodname_dependabot_reachability_caps %} adds a verdict to your alerts and, for reachable alerts, call-path evidence that shows how your code can call a vulnerable function. A call path does not prove that a vulnerability can be exploited. For information about verdict definitions and feature availability, see [AUTOTITLE](/code-security/concepts/supply-chain-security/about-reachability-analysis-for-dependabot-alerts).
+
+1. Open an alert with a "Reachable" verdict.
+1. In the "Reachability call paths" section, review the code location, then click **View call paths**.
+1. Follow the path from your repository's code through its dependencies to the vulnerable function. Use the code locations to identify where your application calls the affected dependency.
+1. If multiple sample paths are available, use the dropdown menu in the dialog to inspect another path.
+
+The dialog shows up to five sample paths, not every possible call path. Verdicts reflect the most recent completed scan, not necessarily your latest code changes. Use this evidence to prioritize and plan remediation. {% data variables.product.prodname_dependabot_reachability_caps %} does not automatically close or dismiss alerts.
+
+{% endif %}
 
 ### Fixing vulnerable dependencies
 
@@ -110,7 +146,7 @@ You can review the details of a {% data variables.product.prodname_dependabot %}
 1. Optionally, if you do not use {% data variables.product.prodname_dependabot_security_updates %}, you can use the information on the page to decide which version of the dependency to upgrade to and create a pull request to update the dependency to a secure version.
 1. When you're ready to update your dependency and resolve the vulnerability, merge the pull request.
 
-   Each pull request raised by {% data variables.product.prodname_dependabot %} includes information on commands you can use to control {% data variables.product.prodname_dependabot %}. For more information, see [AUTOTITLE](/code-security/dependabot/working-with-dependabot/managing-pull-requests-for-dependency-updates#managing-dependabot-pull-requests-with-comment-commands).
+   Each pull request raised by {% data variables.product.prodname_dependabot %} includes information on commands you can use to control {% data variables.product.prodname_dependabot %}. For more information, see [AUTOTITLE](/code-security/how-tos/secure-your-supply-chain/manage-your-dependency-security/manage-dependabot-prs#managing-dependabot-pull-requests-with-comment-commands).
 
 ## Dismissing {% data variables.product.prodname_dependabot_alerts %}
 
@@ -164,8 +200,8 @@ You can view all open alerts, and you can reopen alerts that have been previousl
 
 ## Reviewing the audit logs for {% data variables.product.prodname_dependabot_alerts %}
 
-When a member of your organization {% ifversion not fpt %}or enterprise {% endif %}performs an action related to {% data variables.product.prodname_dependabot_alerts %}, you can review the actions in the audit log. For more information about accessing the log, see [AUTOTITLE](/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#accessing-the-audit-log){% ifversion not fpt %} and [AUTOTITLE](/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/accessing-the-audit-log-for-your-enterprise).{% else %}.{% endif %}
+When a member of your organization {% ifversion not fpt %}or enterprise {% endif %}performs an action related to {% data variables.product.prodname_dependabot_alerts %}, you can review the actions in the audit log. For more information about accessing the log, see [AUTOTITLE](/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#accessing-the-organizations-audit-log-via-the-web-interface){% ifversion not fpt %} and [AUTOTITLE](/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/accessing-the-audit-log-for-your-enterprise).{% else %}.{% endif %}
 
 ![Screenshot of the audit log showing Dependabot alerts.](/assets/images/help/dependabot/audit-log-ui-dependabot-alert.png)
 
-Events in your audit log for {% data variables.product.prodname_dependabot_alerts %} include details such as who performed the action, what the action was, and when the action was performed. The event also includes a link to the alert itself. When a member of your organization dismisses an alert, the event displays the dismissal reason and comment. For information on the {% data variables.product.prodname_dependabot_alerts %} actions, see the `repository_vulnerability_alert` category in [AUTOTITLE](/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/audit-log-events-for-your-organization#repository_vulnerability_alert){% ifversion not fpt %} and [AUTOTITLE](/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise#repository_vulnerability_alert).{% else %}.{% endif %}
+Events in your audit log for {% data variables.product.prodname_dependabot_alerts %} include details such as who performed the action, what the action was, and when the action was performed. The event also includes a link to the alert itself. When a member of your organization dismisses an alert, the event displays the dismissal reason and comment. For information on the {% data variables.product.prodname_dependabot_alerts %} actions, see the `repository_vulnerability_alert` category in [AUTOTITLE](/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/audit-log-events-for-your-organization){% ifversion not fpt %} and [AUTOTITLE](/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise#repository_vulnerability_alert).{% else %}.{% endif %}

@@ -57,7 +57,13 @@ The Model Context Protocol (MCP) allows you to add external tools and data sourc
 * Book tickets online
 * Integrate with a calendar application
 
-For more information, see [AUTOTITLE](/copilot/concepts/context/mcp).
+For more information, see [AUTOTITLE](/copilot/concepts/customizations/mcp).
+
+## {% data variables.product.github %}-verified MCP servers
+
+{% data variables.product.github %}-verified MCP servers (connectors) give {% data variables.copilot.copilot_cli_short %} access to tools and context from external services. Connect a service once, then use the connection across supported {% data variables.product.prodname_copilot_short %} surfaces without repeating setup or signing in separately in each one. {% data variables.product.github %} handles MCP server configuration and authentication for you.
+
+For more information, see [AUTOTITLE](/copilot/concepts/customizations/copilot-connectors).
 
 ## Plugins
 
@@ -65,4 +71,10 @@ For more information, see [AUTOTITLE](/copilot/concepts/context/mcp).
 
 They bundle multiple customization components together into a single installable unit. You can install plugins directly from a repository, from a plugin marketplace, or from a local path.
 
-For more information, see [AUTOTITLE](/copilot/concepts/agents/copilot-cli/about-cli-plugins).
+For more information, see [AUTOTITLE](/copilot/concepts/agents/about-plugins).
+
+## Personal CLI settings
+
+The `/settings` slash command allows you to view and change your {% data variables.copilot.copilot_cli %} settings from within an interactive session. It controls user-level settings such as whether {% data variables.product.prodname_copilot_short %} updates itself automatically, which color palette the interface uses, what appears in the footer, and many other options.
+
+For more information, see [AUTOTITLE](/copilot/how-tos/copilot-cli/customize-copilot/change-settings).

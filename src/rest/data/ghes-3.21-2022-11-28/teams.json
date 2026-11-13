@@ -37,7 +37,7 @@
         },
         {
           "name": "team_type",
-          "description": "<p>Filter team results by their type. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.21/enterprise-cloud@latest/admin/concepts/enterprise-fundamentals/teams-in-an-enterprise#what-kind-of-team-should-i-use\">What kind of team should I use?</a>\"</p>",
+          "description": "<p>Filter team results by their type. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.21/admin/concepts/enterprise-fundamentals/teams-in-an-enterprise#what-kind-of-team-should-i-use\">What kind of team should I use?</a>\"</p>",
           "in": "query",
           "required": false,
           "schema": {
@@ -388,6 +388,11 @@
         },
         {
           "type": "string",
+          "name": "parent_team_slug",
+          "description": "<p>The slug of a team to set as the parent team. Ignored when <code>parent_team_id</code> is also provided.</p>"
+        },
+        {
+          "type": "string",
           "name": "ldap_dn",
           "description": "<p>The <a href=\"https://www.ldap.com/ldap-dns-and-rdns\">distinguished name</a> (DN) of the LDAP entry to map to a team. LDAP synchronization must be enabled to map LDAP entries to a team. Use the \"<a href=\"https://docs.github.com/enterprise-server@3.21/rest/enterprise-admin/ldap#update-ldap-mapping-for-a-team\">Update LDAP mapping for a team</a>\" endpoint to change the LDAP DN. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.21/admin/identity-and-access-management/authenticating-users-for-your-github-enterprise-server-instance/using-ldap#enabling-ldap-sync\">Using LDAP</a>.\"</p>"
         }
@@ -684,17 +689,29 @@
                       "type": "string"
                     },
                     "company": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "blog": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "uri"
                     },
                     "location": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "email": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "email"
                     },
                     "twitter_username": {
@@ -1259,17 +1276,29 @@
                       "type": "string"
                     },
                     "company": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "blog": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "uri"
                     },
                     "location": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "email": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "email"
                     },
                     "twitter_username": {
@@ -1588,6 +1617,11 @@
           "type": "integer or null",
           "name": "parent_team_id",
           "description": "<p>The ID of a team to set as the parent team.</p>"
+        },
+        {
+          "type": "string or null",
+          "name": "parent_team_slug",
+          "description": "<p>The slug of a team to set as the parent team. Ignored when <code>parent_team_id</code> is also provided.</p>"
         }
       ],
       "descriptionHTML": "<p>To edit a team, the authenticated user must either be an organization owner or a team maintainer.</p>\n<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nYou can also specify a team by <code>org_id</code> and <code>team_id</code> using the route <code>PATCH /organizations/{org_id}/team/{team_id}</code>.</p>\n</div>",
@@ -1882,17 +1916,29 @@
                       "type": "string"
                     },
                     "company": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "blog": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "uri"
                     },
                     "location": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "email": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "email"
                     },
                     "twitter_username": {
@@ -2407,17 +2453,29 @@
                       "type": "string"
                     },
                     "company": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "blog": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "uri"
                     },
                     "location": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "email": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "email"
                     },
                     "twitter_username": {
@@ -2790,7 +2848,7 @@
         }
       ],
       "bodyParameters": [],
-      "descriptionHTML": "<p>Lists a team's repositories visible to the authenticated user.</p>\n<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nYou can also specify a team by <code>org_id</code> and <code>team_id</code> using the route <code>GET /organizations/{org_id}/team/{team_id}/repos</code>.</p>\n</div>",
+      "descriptionHTML": "<p>Lists a team's repositories visible to the authenticated user.</p>\n<p>OAuth app tokens and personal access tokens (classic) need the <code>read:org</code> or <code>repo</code> scope to use this endpoint.</p>\n<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nYou can also specify a team by <code>org_id</code> and <code>team_id</code> using the route <code>GET /organizations/{org_id}/team/{team_id}/repos</code>.</p>\n</div>",
       "codeExamples": [
         {
           "request": {
@@ -3341,6 +3399,7 @@
                     "type": "string"
                   },
                   "temp_clone_token": {
+                    "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
                     "type": "string"
                   },
                   "delete_branch_on_merge": {
@@ -4313,6 +4372,7 @@
                   "type": "boolean"
                 },
                 "temp_clone_token": {
+                  "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
                   "type": "string"
                 },
                 "allow_squash_merge": {
@@ -4447,7 +4507,7 @@
         },
         {
           "httpStatusCode": "204",
-          "description": "<p>Response if team has permission for the repository. This is the response when the repository media type hasn't been provded in the Accept header.</p>"
+          "description": "<p>Response if team has permission for the repository. This is the response when the repository media type hasn't been provided in the Accept header.</p>"
         },
         {
           "httpStatusCode": "404",
@@ -4516,7 +4576,7 @@
         {
           "type": "string",
           "name": "permission",
-          "description": "<p>The permission to grant the team on this repository. We accept the following permissions to be set: <code>pull</code>, <code>triage</code>, <code>push</code>, <code>maintain</code>, <code>admin</code> and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's <code>permission</code> attribute will be used to determine what permission to grant the team on this repository.</p>"
+          "description": "<p>The permission to grant the team on this repository. We accept the following permissions to be set: <code>pull</code>, <code>triage</code>, <code>moderate</code>, <code>push</code>, <code>maintain</code>, <code>admin</code> and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's <code>permission</code> attribute will be used to determine what permission to grant the team on this repository.</p>"
         }
       ],
       "descriptionHTML": "<p>To add a repository to a team or update the team's permission on a repository, the authenticated user must have admin access to the repository, and must be able to see the team. The repository must be owned by the organization, or a direct fork of a repository owned by the organization. You will get a <code>422 Unprocessable Entity</code> status if you attempt to add a repository to a team that is not owned by the organization. Note that, if you choose not to pass any parameters, you'll need to set <code>Content-Length</code> to zero when calling out to this endpoint. For more information, see \"<a href=\"https://docs.github.com/enterprise-server@3.21/rest/guides/getting-started-with-the-rest-api#http-method\">HTTP method</a>.\"</p>\n<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nYou can also specify a team by <code>org_id</code> and <code>team_id</code> using the route <code>PUT /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}</code>.</p>\n</div>\n<p>For more information about the permission levels, see \"<a href=\"https://docs.github.com/enterprise-server@3.21/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization\">Repository permission levels for an organization</a>\".</p>",
@@ -5267,17 +5327,29 @@
                       "type": "string"
                     },
                     "company": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "blog": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "uri"
                     },
                     "location": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "email": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "email"
                     },
                     "twitter_username": {
@@ -5588,6 +5660,11 @@
           "type": "integer or null",
           "name": "parent_team_id",
           "description": "<p>The ID of a team to set as the parent team.</p>"
+        },
+        {
+          "type": "string or null",
+          "name": "parent_team_slug",
+          "description": "<p>The slug of a team to set as the parent team. Ignored when <code>parent_team_id</code> is also provided.</p>"
         }
       ],
       "descriptionHTML": "<div class=\"ghd-alert ghd-alert-attention\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg>Warning</p>\n<p>\n<strong>Endpoint closing down notice:</strong> This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new <a href=\"https://docs.github.com/enterprise-server@3.21/rest/teams/teams#update-a-team\">Update a team</a> endpoint.</p>\n</div>\n<p>To edit a team, the authenticated user must either be an organization owner or a team maintainer.</p>\n<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nWith nested teams, the <code>privacy</code> for parent teams cannot be <code>secret</code>.</p>\n</div>",
@@ -5881,17 +5958,29 @@
                       "type": "string"
                     },
                     "company": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "blog": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "uri"
                     },
                     "location": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "email": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "email"
                     },
                     "twitter_username": {
@@ -6405,17 +6494,29 @@
                       "type": "string"
                     },
                     "company": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "blog": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "uri"
                     },
                     "location": {
-                      "type": "string"
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     },
                     "email": {
-                      "type": "string",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
                       "format": "email"
                     },
                     "twitter_username": {
@@ -7323,6 +7424,7 @@
                     "type": "string"
                   },
                   "temp_clone_token": {
+                    "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
                     "type": "string"
                   },
                   "delete_branch_on_merge": {
@@ -8289,6 +8391,7 @@
                   "type": "boolean"
                 },
                 "temp_clone_token": {
+                  "description": "When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
                   "type": "string"
                 },
                 "allow_squash_merge": {
@@ -8486,6 +8589,7 @@
           "description": "<p>The permission to grant the team on this repository. If no permission is specified, the team's <code>permission</code> attribute will be used to determine what permission to grant the team on this repository.</p>",
           "enum": [
             "pull",
+            "moderate",
             "push",
             "admin"
           ]
@@ -9247,17 +9351,29 @@
                         "type": "string"
                       },
                       "company": {
-                        "type": "string"
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "blog": {
-                        "type": "string",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
                         "format": "uri"
                       },
                       "location": {
-                        "type": "string"
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "email": {
-                        "type": "string",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
                         "format": "email"
                       },
                       "twitter_username": {
@@ -10257,7 +10373,7 @@
         }
       ],
       "bodyParameters": [],
-      "descriptionHTML": "<p>Team members will include the members of child teams.</p>\n<p>To list members in a team, the team must be visible to the authenticated user.</p>",
+      "descriptionHTML": "<p>Team members will include the members of child teams.</p>\n<p>Each member includes their <code>role</code> on the team (<code>member</code> or <code>maintainer</code>) and an <code>inherited</code> flag indicating whether the membership is inherited from a child team (<code>true</code>) or is a direct membership (<code>false</code>). These fields let you read a member's role and direct/inherited status without additional requests.</p>\n<p>To list members in a team, the team must be visible to the authenticated user.</p>\n<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\nYou can also specify a team by <code>org_id</code> and <code>team_id</code> using the route <code>GET /organizations/{org_id}/team/{team_id}/members</code>.</p>\n</div>",
       "codeExamples": [
         {
           "request": {
@@ -10291,14 +10407,16 @@
                 "events_url": "https://api.github.com/users/octocat/events{/privacy}",
                 "received_events_url": "https://api.github.com/users/octocat/received_events",
                 "type": "User",
-                "site_admin": false
+                "site_admin": false,
+                "role": "member",
+                "inherited": false
               }
             ],
             "schema": {
               "type": "array",
               "items": {
-                "title": "Simple User",
-                "description": "A GitHub user.",
+                "title": "Team Member",
+                "description": "A user that is a member of a team, including their role on the team and whether the membership is inherited from a child team.",
                 "type": "object",
                 "properties": {
                   "name": {
@@ -10384,6 +10502,18 @@
                   },
                   "user_view_type": {
                     "type": "string"
+                  },
+                  "role": {
+                    "type": "string",
+                    "description": "The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+                    "enum": [
+                      "member",
+                      "maintainer"
+                    ]
+                  },
+                  "inherited": {
+                    "type": "boolean",
+                    "description": "Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization."
                   }
                 },
                 "required": [
@@ -10809,7 +10939,7 @@
         }
       ],
       "bodyParameters": [],
-      "descriptionHTML": "<div class=\"ghd-alert ghd-alert-attention\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg>Warning</p>\n<p>\n<strong>Endpoint closing down notice:</strong> This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new <a href=\"https://docs.github.com/enterprise-server@3.21/rest/teams/members#list-team-members\"><code>List team members</code></a> endpoint.</p>\n</div>\n<p>Team members will include the members of child teams.</p>",
+      "descriptionHTML": "<div class=\"ghd-alert ghd-alert-attention\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg>Warning</p>\n<p>\n<strong>Endpoint closing down notice:</strong> This endpoint route is closing down and will be removed from the Teams API. We recommend migrating your existing code to use the new <a href=\"https://docs.github.com/enterprise-server@3.21/rest/teams/members#list-team-members\"><code>List team members</code></a> endpoint.</p>\n</div>\n<p>Team members will include the members of child teams.</p>\n<p>Each member includes their <code>role</code> on the team (<code>member</code> or <code>maintainer</code>) and an <code>inherited</code> flag indicating whether the membership is inherited from a child team (<code>true</code>) or is a direct membership (<code>false</code>).</p>",
       "codeExamples": [
         {
           "request": {
@@ -10842,14 +10972,16 @@
                 "events_url": "https://api.github.com/users/octocat/events{/privacy}",
                 "received_events_url": "https://api.github.com/users/octocat/received_events",
                 "type": "User",
-                "site_admin": false
+                "site_admin": false,
+                "role": "member",
+                "inherited": false
               }
             ],
             "schema": {
               "type": "array",
               "items": {
-                "title": "Simple User",
-                "description": "A GitHub user.",
+                "title": "Team Member",
+                "description": "A user that is a member of a team, including their role on the team and whether the membership is inherited from a child team.",
                 "type": "object",
                 "properties": {
                   "name": {
@@ -10935,6 +11067,18 @@
                   },
                   "user_view_type": {
                     "type": "string"
+                  },
+                  "role": {
+                    "type": "string",
+                    "description": "The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+                    "enum": [
+                      "member",
+                      "maintainer"
+                    ]
+                  },
+                  "inherited": {
+                    "type": "boolean",
+                    "description": "Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization."
                   }
                 },
                 "required": [
@@ -11178,7 +11322,7 @@
         },
         {
           "httpStatusCode": "404",
-          "description": "<p>Not Found if team synchronization is setup</p>"
+          "description": "<p>Not Found if team synchronization is set up</p>"
         }
       ],
       "previews": [],

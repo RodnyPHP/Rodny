@@ -15,7 +15,7 @@ category:
 
 ## Prerequisites
 
-You should understand what {% data variables.copilot.copilot_custom_agents %} are and how they work. See [AUTOTITLE](/copilot/concepts/agents/cloud-agent/about-custom-agents).
+You should understand what {% data variables.copilot.copilot_custom_agents %} are and how they work. See [AUTOTITLE](/copilot/concepts/customizations/custom-agents).
 
 > [!NOTE]
 > If your organization is part of an enterprise, enterprise owners can configure a ruleset that restricts {% data variables.copilot.custom_agents_short %}. Contact your enterprise owners to check whether you can create and manage organization-level {% data variables.copilot.custom_agents_short %}.
@@ -40,4 +40,4 @@ If you don't already have a suitable repository, follow the steps below to creat
 
 ## Next steps
 
-To trial {% data variables.copilot.custom_agents_short %}, see [AUTOTITLE](/copilot/how-tos/use-copilot-agents/cloud-agent/test-custom-agents).
+To trial {% data variables.copilot.custom_agents_short %}, see [AUTOTITLE](/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/test-custom-agents).

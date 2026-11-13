@@ -385,10 +385,130 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "user_view_type",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -3170,6 +3290,53 @@
         "name": "review_comments_url",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
       },
       {
         "type": "string",
@@ -3599,10 +3766,124 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -6385,6 +6666,53 @@
         "isRequired": true
       },
       {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
+      },
+      {
         "type": "string",
         "name": "state",
         "description": "<p>State of this Pull Request. Either <code>open</code> or <code>closed</code>.</p>",
@@ -6812,10 +7140,124 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -9597,6 +10039,53 @@
         "name": "review_comments_url",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
       },
       {
         "type": "string",
@@ -10051,6 +10540,142 @@
             "name": "default",
             "description": "",
             "isRequired": true
+          },
+          {
+            "type": "null or object",
+            "name": "archived_by",
+            "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string or null",
+                "name": "name",
+                "description": ""
+              },
+              {
+                "type": "string or null",
+                "name": "email",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "login",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "integer",
+                "name": "id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "node_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "avatar_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string or null",
+                "name": "gravatar_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "html_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "followers_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "following_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "gists_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "subscriptions_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "organizations_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "repos_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "received_events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "boolean",
+                "name": "site_admin",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_at",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "user_view_type",
+                "description": ""
+              }
+            ]
           }
         ]
       },
@@ -11541,7 +12166,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -12523,7 +13148,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -13100,6 +13725,53 @@
             "name": "commit_message",
             "description": "<p>Commit message for the merge commit.</p>",
             "isRequired": true
+          }
+        ]
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
           }
         ]
       },
@@ -13663,6 +14335,142 @@
             "name": "default",
             "description": "",
             "isRequired": true
+          },
+          {
+            "type": "null or object",
+            "name": "archived_by",
+            "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string or null",
+                "name": "name",
+                "description": ""
+              },
+              {
+                "type": "string or null",
+                "name": "email",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "login",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "integer",
+                "name": "id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "node_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "avatar_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string or null",
+                "name": "gravatar_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "html_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "followers_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "following_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "gists_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "subscriptions_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "organizations_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "repos_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "received_events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "boolean",
+                "name": "site_admin",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_at",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "user_view_type",
+                "description": ""
+              }
+            ]
           }
         ]
       },
@@ -15153,7 +15961,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -16135,7 +16943,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -16712,6 +17520,53 @@
             "name": "commit_message",
             "description": "<p>Commit message for the merge commit.</p>",
             "isRequired": true
+          }
+        ]
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
           }
         ]
       },
@@ -17484,10 +18339,125 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -20272,6 +21242,53 @@
         "isRequired": true
       },
       {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
+      },
+      {
         "type": "string",
         "name": "state",
         "description": "<p>State of this Pull Request. Either <code>open</code> or <code>closed</code>.</p>",
@@ -20787,6 +21804,142 @@
             "name": "default",
             "description": "",
             "isRequired": true
+          },
+          {
+            "type": "null or object",
+            "name": "archived_by",
+            "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string or null",
+                "name": "name",
+                "description": ""
+              },
+              {
+                "type": "string or null",
+                "name": "email",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "login",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "integer",
+                "name": "id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "node_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "avatar_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string or null",
+                "name": "gravatar_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "html_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "followers_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "following_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "gists_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "subscriptions_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "organizations_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "repos_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "received_events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "boolean",
+                "name": "site_admin",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_at",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "user_view_type",
+                "description": ""
+              }
+            ]
           }
         ]
       },
@@ -22277,7 +23430,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -23259,7 +24412,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -23840,6 +24993,53 @@
         ]
       },
       {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
+      },
+      {
         "type": "boolean",
         "name": "draft",
         "description": "<p>Indicates whether or not the pull request is a draft.</p>"
@@ -24127,6 +25327,148 @@
         "name": "description",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "string or null",
+        "name": "archived_at",
+        "description": "<p>Timestamp indicating when the label was archived, or <code>null</code> if it has not been archived.</p>",
+        "isRequired": true
+      },
+      {
+        "type": "null or object",
+        "name": "archived_by",
+        "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string or null",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string or null",
+            "name": "gravatar_id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "starred_at",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "user_view_type",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "integer",
@@ -24419,10 +25761,125 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -26589,6 +28046,148 @@
             "name": "description",
             "description": "",
             "isRequired": true
+          },
+          {
+            "type": "string or null",
+            "name": "archived_at",
+            "description": "<p>Timestamp indicating when the label was archived, or <code>null</code> if it has not been archived.</p>",
+            "isRequired": true
+          },
+          {
+            "type": "null or object",
+            "name": "archived_by",
+            "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string or null",
+                "name": "name",
+                "description": ""
+              },
+              {
+                "type": "string or null",
+                "name": "email",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "login",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "integer",
+                "name": "id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "node_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "avatar_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string or null",
+                "name": "gravatar_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "html_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "followers_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "following_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "gists_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "subscriptions_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "organizations_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "repos_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "received_events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "boolean",
+                "name": "site_admin",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_at",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "user_view_type",
+                "description": ""
+              }
+            ]
           },
           {
             "type": "integer",
@@ -27207,6 +28806,53 @@
         "isRequired": true
       },
       {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
+      },
+      {
         "type": "string",
         "name": "state",
         "description": "<p>State of this Pull Request. Either <code>open</code> or <code>closed</code>.</p>",
@@ -27634,10 +29280,125 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -30419,6 +32180,53 @@
         "name": "review_comments_url",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
       },
       {
         "type": "string",
@@ -31082,10 +32890,125 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -33870,6 +35793,53 @@
         "isRequired": true
       },
       {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
+      },
+      {
         "type": "string",
         "name": "state",
         "description": "<p>State of this Pull Request. Either <code>open</code> or <code>closed</code>.</p>",
@@ -34322,6 +36292,142 @@
             "name": "default",
             "description": "",
             "isRequired": true
+          },
+          {
+            "type": "null or object",
+            "name": "archived_by",
+            "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string or null",
+                "name": "name",
+                "description": ""
+              },
+              {
+                "type": "string or null",
+                "name": "email",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "login",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "integer",
+                "name": "id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "node_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "avatar_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string or null",
+                "name": "gravatar_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "html_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "followers_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "following_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "gists_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "subscriptions_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "organizations_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "repos_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "received_events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "boolean",
+                "name": "site_admin",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_at",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "user_view_type",
+                "description": ""
+              }
+            ]
           }
         ]
       },
@@ -35812,7 +37918,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -36794,7 +38900,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -37371,6 +39477,53 @@
             "name": "commit_message",
             "description": "<p>Commit message for the merge commit.</p>",
             "isRequired": true
+          }
+        ]
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
           }
         ]
       },
@@ -37934,6 +40087,142 @@
             "name": "default",
             "description": "",
             "isRequired": true
+          },
+          {
+            "type": "null or object",
+            "name": "archived_by",
+            "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string or null",
+                "name": "name",
+                "description": ""
+              },
+              {
+                "type": "string or null",
+                "name": "email",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "login",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "integer",
+                "name": "id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "node_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "avatar_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string or null",
+                "name": "gravatar_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "html_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "followers_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "following_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "gists_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "subscriptions_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "organizations_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "repos_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "received_events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "boolean",
+                "name": "site_admin",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_at",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "user_view_type",
+                "description": ""
+              }
+            ]
           }
         ]
       },
@@ -39424,7 +41713,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -40406,7 +42695,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -40983,6 +43272,53 @@
             "name": "commit_message",
             "description": "<p>Commit message for the merge commit.</p>",
             "isRequired": true
+          }
+        ]
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
           }
         ]
       },
@@ -41546,6 +43882,142 @@
             "name": "default",
             "description": "",
             "isRequired": true
+          },
+          {
+            "type": "null or object",
+            "name": "archived_by",
+            "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string or null",
+                "name": "name",
+                "description": ""
+              },
+              {
+                "type": "string or null",
+                "name": "email",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "login",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "integer",
+                "name": "id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "node_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "avatar_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string or null",
+                "name": "gravatar_id",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "html_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "followers_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "following_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "gists_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "subscriptions_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "organizations_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "repos_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "received_events_url",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "boolean",
+                "name": "site_admin",
+                "description": "",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "starred_at",
+                "description": ""
+              },
+              {
+                "type": "string",
+                "name": "user_view_type",
+                "description": ""
+              }
+            ]
           }
         ]
       },
@@ -43036,7 +45508,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -44018,7 +46490,7 @@
               {
                 "type": "string",
                 "name": "temp_clone_token",
-                "description": ""
+                "description": "<p>When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.</p>"
               },
               {
                 "type": "boolean",
@@ -44599,6 +47071,53 @@
         ]
       },
       {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
+      },
+      {
         "type": "boolean",
         "name": "draft",
         "description": "<p>Indicates whether or not the pull request is a draft.</p>"
@@ -45133,10 +47652,129 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "user_view_type",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -47926,6 +50564,53 @@
         "name": "review_comments_url",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
       },
       {
         "type": "string",
@@ -48630,10 +51315,130 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "user_view_type",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -51415,6 +54220,53 @@
         "name": "review_comments_url",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
       },
       {
         "type": "string",
@@ -52112,10 +54964,125 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -54897,6 +57864,53 @@
         "name": "review_comments_url",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
       },
       {
         "type": "string",
@@ -55447,10 +58461,125 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -58235,6 +61364,53 @@
         "isRequired": true
       },
       {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
+      },
+      {
         "type": "string",
         "name": "state",
         "description": "<p>State of this Pull Request. Either <code>open</code> or <code>closed</code>.</p>",
@@ -58415,6 +61591,148 @@
         "name": "description",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "string or null",
+        "name": "archived_at",
+        "description": "<p>Timestamp indicating when the label was archived, or <code>null</code> if it has not been archived.</p>",
+        "isRequired": true
+      },
+      {
+        "type": "null or object",
+        "name": "archived_by",
+        "description": "<p>The user who archived the label, or <code>null</code> if it has not been archived.</p>",
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string or null",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string or null",
+            "name": "gravatar_id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "starred_at",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "user_view_type",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "integer",
@@ -58707,10 +62025,125 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization",
+              "Mannequin"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -61494,6 +64927,53 @@
         "isRequired": true
       },
       {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
+      },
+      {
         "type": "string",
         "name": "state",
         "description": "<p>State of this Pull Request. Either <code>open</code> or <code>closed</code>.</p>",
@@ -61921,10 +65401,124 @@
         ]
       },
       {
-        "type": "array of object,nulls",
+        "type": "array of objects",
         "name": "assignees",
         "description": "",
-        "isRequired": true
+        "isRequired": true,
+        "childParamsGroups": [
+          {
+            "type": "string",
+            "name": "avatar_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "deleted",
+            "description": ""
+          },
+          {
+            "type": "string or null",
+            "name": "email",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "followers_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "following_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gists_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "gravatar_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "html_url",
+            "description": ""
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "login",
+            "description": "",
+            "isRequired": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "node_id",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "organizations_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "received_events_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "repos_url",
+            "description": ""
+          },
+          {
+            "type": "boolean",
+            "name": "site_admin",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "starred_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "subscriptions_url",
+            "description": ""
+          },
+          {
+            "type": "string",
+            "name": "type",
+            "description": "",
+            "enum": [
+              "Bot",
+              "User",
+              "Organization"
+            ]
+          },
+          {
+            "type": "string",
+            "name": "url",
+            "description": ""
+          }
+        ]
       },
       {
         "type": "string",
@@ -64705,6 +68299,53 @@
         "name": "review_comments_url",
         "description": "",
         "isRequired": true
+      },
+      {
+        "type": "object or null",
+        "name": "stack",
+        "description": "<p>The stack information associated with a pull request.</p>",
+        "childParamsGroups": [
+          {
+            "type": "object",
+            "name": "base",
+            "description": "",
+            "isRequired": true,
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "ref",
+                "description": "<p>The base ref of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              },
+              {
+                "type": "string",
+                "name": "sha",
+                "description": "<p>The base SHA of the stack this pull request belongs to.</p>",
+                "isRequired": true
+              }
+            ]
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "description": "<p>The total number of pull requests in the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "position",
+            "description": "<p>The one-based position of this pull request within the stack, where 1 is the bottom of the stack.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "id",
+            "description": "<p>The ID of the stack that this pull request belongs to.</p>"
+          },
+          {
+            "type": "integer",
+            "name": "number",
+            "description": "<p>The number of the stack that this pull request belongs to.</p>"
+          }
+        ]
       },
       {
         "type": "string",

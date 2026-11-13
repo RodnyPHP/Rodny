@@ -68,8 +68,6 @@ You can use the REST and GraphQL APIs to manage rulesets. For more information, 
 
 {% endif %}
 
-{% ifversion repo-rules-management %}
-
 ## Importing a ruleset
 
 You can import a ruleset from another repository or organization using the exported JSON file from the previous section. This can be useful if you want to apply the same ruleset to multiple repositories or organizations.
@@ -79,7 +77,23 @@ You can import a ruleset from another repository or organization using the expor
 {% data reusables.organizations.access-ruleset-settings %}
 {% data reusables.repositories.import-a-ruleset %}
 
+{% ifversion rule-insights-dashboard-org-level %}
+
+## Viewing the rule insights dashboard
+
+Use the rule insights dashboard to review the evaluation activity of rulesets across your organization. You can:
+
+* Review aggregated rule evaluation metrics across all repositories in your organization to understand where and how your rulesets take effect.
+* Identify the repositories with the most bypasses so you can prioritize your review.
+* Filter results by evaluation status and date range to focus on the activity that matters to you.
+* Export the data to a CSV file for further analysis.
+
+{% data reusables.profile.access_org %}
+{% data reusables.profile.org_settings %}
+1. {% data reusables.user-settings.code-planning-automation %} click **{% octicon "repo" aria-hidden="true" aria-label="repo" %} Repository**, then click **Dashboard**.
+
 {% endif %}
+
 {% ifversion not fpt %}
 
 ## Viewing insights for rulesets
@@ -88,7 +102,7 @@ You can view insights for rulesets to see how rulesets are affecting the reposit
 
 {% data reusables.profile.access_org %}
 {% data reusables.profile.org_settings %}
-1. In the left sidebar, in the "Code, planning, and automation" section, click **{% octicon "repo" aria-hidden="true" aria-label="repo" %} Repository**, then click **Rule insights**.
+1. {% data reusables.user-settings.code-planning-automation %} click **{% octicon "repo" aria-hidden="true" aria-label="repo" %} Repository**, then click **Rule insights**.
 
    ![Screenshot of an organization's settings page. In the sidebar, a link labeled "Rule insights" is outlined in orange.](/assets/images/help/organizations/sidebar-repository-rule-insights.png)
 

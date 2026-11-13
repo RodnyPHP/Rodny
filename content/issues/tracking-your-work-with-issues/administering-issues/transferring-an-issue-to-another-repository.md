@@ -15,7 +15,7 @@ shortTitle: Transfer an issue
 category:
   - Triage and organize issues
 ---
-To transfer an open issue to another repository, you must have write access to the repository the issue is in and the repository you're transferring the issue to. For more information, see [AUTOTITLE](/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization).
+To transfer an open issue to another repository, you must have at least moderate access to the repository the issue is in and the repository you're transferring the issue to. For more information, see [AUTOTITLE](/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization).
 
 > [!NOTE]
 > You can only transfer issues between repositories owned by the same user or organization account. A private repository issue cannot be transferred to a public repository.
@@ -51,4 +51,4 @@ gh issue transfer ISSUE {% ifversion ghes %}HOSTNAME/{% endif %}OWNER/REPO
 
 ## Further reading
 
-* [AUTOTITLE](/issues/tracking-your-work-with-issues/about-issues)
+* [AUTOTITLE](/issues/tracking-your-work-with-issues/learning-about-issues/about-issues)

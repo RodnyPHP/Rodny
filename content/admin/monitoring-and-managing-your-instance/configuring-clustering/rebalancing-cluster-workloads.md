@@ -22,7 +22,7 @@ If a cluster node is unreachable by other nodes due to a hardware or software fa
 
 You can manage allocations using the `ghe-cluster-balance` utility, which can display the status of existing allocations or force your instance to balance allocations. For example, you should balance allocations after you add a new node to the cluster. Optionally, you can schedule regular balancing.
 
-You can run the following commands from any node in your cluster using the administrative shell. For more information, see [Accessing the administrative shell (SSH)](/admin/configuration/configuring-your-enterprise/accessing-the-administrative-shell-ssh).
+You can run the following commands from any node in your cluster using the administrative shell. For more information, see [AUTOTITLE](/admin/administering-your-instance/administering-your-instance-from-the-command-line/accessing-the-administrative-shell-ssh).
 
 ## Checking the distribution of cluster jobs
 
@@ -63,8 +63,7 @@ After you determine which jobs are unbalanced across your cluster's nodes, you c
 
 You can schedule rebalancing of jobs on your cluster by setting and applying configuration values for {% data variables.location.product_location %}.
 
-> [!NOTE]
-> Currently, you can only schedule reallocation of jobs for the HTTP server, `github-unicorn`.
+By default, scheduled rebalancing considers all eligible jobs, including `github-unicorn` and other eligible services. You can apply a job filter with `-j`.
 
 1. To configure automatic, hourly balancing of jobs, run the following command.
 
@@ -82,4 +81,4 @@ You can schedule rebalancing of jobs on your cluster by setting and applying con
 
 ## Further reading
 
-* [AUTOTITLE](/admin/configuration/configuring-your-enterprise/command-line-utilities#ghe-cluster-balance)
+* [AUTOTITLE](/admin/administering-your-instance/administering-your-instance-from-the-command-line/command-line-utilities#ghe-cluster-balance)

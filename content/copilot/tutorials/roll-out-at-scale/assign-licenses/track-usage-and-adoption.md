@@ -35,7 +35,7 @@ To get a wider view of adoption, you can combine dashboard insights with qualita
 
 {% data reusables.copilot.access-copilot-metrics-dashboard %}
 
-The dashboard displays aggregated telemetry from developer IDEs and updates daily, though data may be up to 3 days behind UTC.
+The dashboard displays aggregated telemetry from developer IDEs and updates daily. Data for a given day is available within two full UTC days after that day closes.
 
 ## Step 2: Track license activation
 
@@ -60,6 +60,9 @@ Once licenses are active, focus on the metrics that indicate healthy early adopt
 | Initial agent usage | “Agent adoption” card | Even small agent adoption (5–10%) early on is a positive signal of experimentation. |
 
 Healthy early adoption usually looks like 60–80% of assigned users showing activity within the first month.
+
+> [!TIP]
+> These signals show whether developers are trying {% data variables.product.prodname_copilot_short %}, but not whether that usage is deepening into agent-driven workflows. For a cohort-based view of adoption depth, see [AUTOTITLE](/copilot/how-tos/administer-copilot/view-impact-dashboard).
 
 ## Step 4: Act on limited adoption signals
 
@@ -99,5 +102,6 @@ In some cases, you may need user-level activity data for deeper analysis or to i
 
 ## Further reading
 
+* [AUTOTITLE](/copilot/how-tos/administer-copilot/view-impact-dashboard)
 * [AUTOTITLE](/copilot/tutorials/roll-out-at-scale/assign-licenses/remind-inactive-users)
 * [AUTOTITLE](/copilot/tutorials/roll-out-at-scale/enable-developers/drive-adoption)

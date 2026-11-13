@@ -18,12 +18,14 @@ category:
   - Manage Copilot for a team
 ---
 
-When you disable {% data variables.product.prodname_copilot %} for organizations, organization owners cannot assign {% data variables.product.prodname_copilot %} licenses to members of their organization. Enterprise owners will still be able to assign {% data variables.copilot.copilot_business_short %} licenses to users and teams in the enterprise settings.
+This procedure applies to {% data variables.copilot.copilot_business_short %} and {% data variables.copilot.copilot_enterprise_short %}. When you disable access for organizations, organization owners cannot assign licenses to their members. Enterprise owners can still assign {% data variables.copilot.copilot_business_short %} seats directly to users and teams in the enterprise settings.
+
+For how seat assignment works with {% data variables.product.prodname_copilot_short %} access, see [AUTOTITLE](/copilot/concepts/billing-and-usage/organizations-and-enterprises/seats-and-billing-cycles#seat-assignment).
 
 {% data reusables.enterprise-accounts.copilot-licensing %}
 1. Next to "Organization access", choose whether to disable {% data variables.product.prodname_copilot_short %} for all organizations or allow for specific organizations.
 
-   ![Screenshot of the the "Organization access" section, with the dropdown menu highlighted.](/assets/images/help/copilot/organization-access-menu.png)
+   ![Screenshot of the "Organization access" section, with the dropdown menu highlighted.](/assets/images/help/copilot/organization-access-menu.png)
 
 1. If you selected **Allow for specific organizations**:
 
@@ -37,5 +39,5 @@ Once {% data variables.product.prodname_copilot_short %} is disabled, licenses t
 
 ## Further reading
 
-* [AUTOTITLE](/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot)
-* [AUTOTITLE](/copilot/managing-copilot/managing-copilot-for-your-enterprise/managing-policies-and-features-for-copilot-in-your-enterprise)
+* [AUTOTITLE](/billing/concepts/product-billing/github-copilot-licenses)
+* [AUTOTITLE](/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-enterprise-policies)

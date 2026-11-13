@@ -25,22 +25,22 @@ category:
 You can only assign issues to {% data variables.product.prodname_copilot_short %} if you have access to {% data variables.product.prodname_copilot_short %} through a paid {% data variables.product.prodname_copilot_short %} plan.
 
 If you do not already have a subscription for one of these plans, click this button for more information:<br>
-<a href="https://github.com/features/copilot/plans?ref_product=copilot&ref_type=engagement&ref_style=button" target="_blank" class="btn btn-primary mt-3 mr-3 no-underline"><span>Sign up for {% data variables.product.prodname_copilot_short %}</span> {% octicon "link-external" height:16 aria-label="link-external" %}</a>
+<a href="https://github.com/features/copilot/plans?ref_product=copilot&ref_type=engagement&ref_style=button&utm_source=troubleshooting-cca-signup-cta&utm_medium=docs&utm_campaign=universe-2026" target="_blank" class="btn btn-primary mt-3 mr-3 no-underline"><span>Sign up for {% data variables.product.prodname_copilot_short %}</span> {% octicon "link-external" height:16 aria-label="link-external" %}</a>
 
 If you _do_ have a paid {% data variables.product.prodname_copilot_short %} plan, check that {% data variables.copilot.copilot_cloud_agent %} {% ifversion ghec %}is enabled and{% endif %} has not been manually disabled for the repository:
 
 {% ifversion ghec %}
 
-* If you are on the {% data variables.copilot.copilot_for_business %} or {% data variables.copilot.copilot_enterprise_short %} plan, your ability to use {% data variables.copilot.copilot_cloud_agent %} is controlled by your enterprise and/or organization administrator. See [AUTOTITLE](/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/manage-copilot-cloud-agent).
+* If you are on the {% data variables.copilot.copilot_for_business %} or {% data variables.copilot.copilot_enterprise_short %} plan, your ability to use {% data variables.copilot.copilot_cloud_agent %} is controlled by your enterprise and/or organization administrator. See [AUTOTITLE](/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent).
 
 {% endif %}
 
 * For organization-owned repositories, the availability of {% data variables.copilot.copilot_cloud_agent %} in the repository is managed by the organization and/or enterprise administrators. See [AUTOTITLE](/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-organization/add-copilot-cloud-agent).
 
-* For personal repositories, the availability of {% data variables.copilot.copilot_cloud_agent %} in the repository is configured in your account settings. See [AUTOTITLE](/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-copilot-plan/managing-copilot-policies-as-an-individual-subscriber#enabling-or-disabling-copilot-cloud-agent).
+* For personal repositories, the availability of {% data variables.copilot.copilot_cloud_agent %} in the repository is configured in your account settings. See [AUTOTITLE](/copilot/how-tos/manage-your-account/manage-policies#disabling-or-enabling-copilot-cloud-agent-in-your-repositories).
 
 > [!NOTE]
-> You can check whether {% data variables.copilot.copilot_cloud_agent %} has been enabled for you in the features page of your {% data variables.product.prodname_copilot_short %} settings: [github.com/settings/copilot/features](https://github.com/settings/copilot/features).
+> You can check whether {% data variables.copilot.copilot_cloud_agent %} has been enabled for you in the features page of your {% data variables.product.prodname_copilot_short %} settings: [github.com/settings/copilot/features](https://github.com/settings/copilot/features?utm_source=troubleshooting-cca-article-features&utm_medium=docs&utm_campaign=universe-2026).
 
 ## I have an {% data variables.product.prodname_emu %} account and {% data variables.product.prodname_copilot_short %} won't work in my personal repository
 
@@ -56,6 +56,10 @@ If you asked {% data variables.product.prodname_copilot_short %} to create a pul
 
 > [!IMPORTANT]
 > {% data reusables.copilot.cloud-agent.use-chat-participant-in-vsc %}
+
+## {% data variables.product.prodname_copilot_short %} can't start a session in a cloud sandbox
+
+If {% data variables.product.prodname_copilot_short %} can't start a session that runs in a cloud sandbox, check that you can use {% data variables.copilot.copilot_in_the_cloud_short %}. If you get {% data variables.product.prodname_copilot_short %} through an organization or enterprise, an owner must enable the **{% data variables.copilot.copilot_in_the_cloud_short %}** policy. See [AUTOTITLE](/copilot/how-tos/cloud-and-local-sandboxes/enabling-or-disabling-cloud-sandboxes-for-your-organization).
 
 ## I assigned an issue to {% data variables.product.prodname_copilot_short %}, but nothing is happening
 
@@ -77,7 +81,7 @@ If this doesn't happen, {% data variables.product.prodname_copilot_short %} may 
 
 {% data variables.product.prodname_copilot_short %} can appear to be stuck for a while, and then get moving again.
 
-If the session remains stuck, it will time out after an hour. You can retry by unassigning the issue and then reassigning it to {% data variables.product.prodname_copilot_short %}.
+If a session that runs on {% data variables.product.prodname_actions %} remains stuck, it will time out after an hour. You can retry by unassigning the issue and then reassigning it to {% data variables.product.prodname_copilot_short %}.
 
 If {% data variables.product.prodname_copilot_short %} got stuck while responding to a comment, try adding the same comment to the pull request again.
 
@@ -85,11 +89,11 @@ If {% data variables.product.prodname_copilot_short %} got stuck while respondin
 
 {% data variables.product.prodname_actions %} workflows will not run automatically when {% data variables.product.prodname_copilot_short %} pushes changes to a pull request.
 
-To allow {% data variables.product.prodname_actions %} workflows to run, click the **Approve and run workflows** button in the pull request's merge box. See [AUTOTITLE](/copilot/how-tos/use-copilot-agents/cloud-agent/review-copilot-prs).
+To allow {% data variables.product.prodname_actions %} workflows to run, click the **Approve and run workflows** button in the pull request's merge box. See [AUTOTITLE](/copilot/how-tos/copilot-on-github/use-copilot-agents/review-copilot-output).
 
 ## {% data variables.product.prodname_copilot_short %} is pushing changes which don't pass my CI checks
 
-While working on an issue, {% data variables.product.prodname_copilot_short %} has access to its own ephemeral development environment, powered by {% data variables.product.prodname_actions %}, where it can execute automated tests and linters to validate its work before it pushes.
+While working on an issue, {% data variables.product.prodname_copilot_short %} has access to its own ephemeral development environment, either in a cloud sandbox or on {% data variables.product.prodname_actions %}, where it can execute automated tests and linters to validate its work before it pushes.
 
 It is most likely to do this if given clear instructions on what to do. The best way to do this is with a `.github/copilot-instructions.md` file. See [AUTOTITLE](/copilot/tutorials/cloud-agent/get-the-best-results#adding-custom-instructions-to-your-repository).
 
@@ -103,7 +107,7 @@ If {% data variables.product.prodname_copilot_short %} tries to make a request w
 
 ![Screenshot of a warning from {% data variables.product.prodname_copilot_short %} about being blocked by the firewall.](/assets/images/help/copilot/cloud-agent/firewall-warning.png)
 
-For more information, see [AUTOTITLE](/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-firewall).
+For more information, see [AUTOTITLE](/copilot/how-tos/copilot-on-github/customize-copilot/customize-the-firewall).
 
 ## {% data variables.product.prodname_copilot_short %} is not picking up attached screenshots
 
@@ -112,4 +116,4 @@ The maximum image size allowed by {% data variables.copilot.copilot_cloud_agent 
 ## Further reading
 
 * [AUTOTITLE](/copilot/tutorials/cloud-agent/get-the-best-results)
-* [AUTOTITLE](/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-environment)
+* [AUTOTITLE](/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment)

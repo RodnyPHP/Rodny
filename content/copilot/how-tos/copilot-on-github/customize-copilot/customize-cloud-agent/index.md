@@ -5,12 +5,13 @@ intro: 'Create specialized agents with tailored expertise and extend their capab
 versions:
   feature: copilot
 children:
+  - /personalize-cloud-sessions
   - /create-custom-agents
   - /add-skills
   - /use-hooks
   - /customize-the-agent-environment
+  - /create-a-custom-environment
   - /configure-secrets-and-variables
-  - /customize-the-agent-firewall
   - /test-custom-agents
 contentType: how-tos
 ---

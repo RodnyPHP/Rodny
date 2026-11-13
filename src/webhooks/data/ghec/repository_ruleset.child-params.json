@@ -374,10 +374,53 @@
                     "isRequired": true
                   },
                   {
+                    "type": "object",
+                    "name": "dismissal_restriction",
+                    "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                    "childParamsGroups": [
+                      {
+                        "type": "array of objects",
+                        "name": "allowed_actors",
+                        "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                        "childParamsGroups": [
+                          {
+                            "type": "integer",
+                            "name": "id",
+                            "description": "<p>ID of the actor that can dismiss reviews.</p>",
+                            "isRequired": true
+                          },
+                          {
+                            "type": "string",
+                            "name": "type",
+                            "description": "<p>The type of the actor</p>",
+                            "isRequired": true,
+                            "enum": [
+                              "User",
+                              "Team",
+                              "IntegrationInstallation",
+                              "RepositoryRole"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "enabled",
+                        "description": "<p>Whether to restrict review dismissal to specific actors.</p>",
+                        "isRequired": true
+                      }
+                    ]
+                  },
+                  {
                     "type": "boolean",
                     "name": "require_code_owner_review",
                     "description": "<p>Require an approving review in pull requests that modify files that have a designated code owner.</p>",
                     "isRequired": true
+                  },
+                  {
+                    "type": "boolean",
+                    "name": "require_extra_approval_for_unattributed_changes",
+                    "description": "<p>When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required.</p>"
                   },
                   {
                     "type": "boolean",
@@ -400,7 +443,7 @@
                   {
                     "type": "array of objects",
                     "name": "required_reviewers",
-                    "description": "<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\n<code>required_reviewers</code> is in beta and subject to change.</p>\n</div>\n<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
+                    "description": "<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
                     "childParamsGroups": [
                       {
                         "type": "array of strings",
@@ -889,8 +932,76 @@
           },
           {
             "type": "object",
+            "name": "code_quality",
+            "description": "<p>Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "code_quality"
+                ]
+              },
+              {
+                "type": "object",
+                "name": "parameters",
+                "description": "",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "severity",
+                    "description": "<p>The lowest severity level at which code quality reviews need to be resolved before commits can be merged.</p>",
+                    "isRequired": true,
+                    "enum": [
+                      "errors",
+                      "warnings",
+                      "notes",
+                      "all"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "code_coverage",
+            "description": "<p>Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "code_coverage"
+                ]
+              },
+              {
+                "type": "object",
+                "name": "parameters",
+                "description": "",
+                "childParamsGroups": [
+                  {
+                    "type": "number",
+                    "name": "max_coverage_drop",
+                    "description": "<p>The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.</p>"
+                  },
+                  {
+                    "type": "number",
+                    "name": "minimum_coverage",
+                    "description": "<p>The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.</p>"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
             "name": "copilot_code_review",
-            "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.</p>",
+            "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.</p>",
             "childParamsGroups": [
               {
                 "type": "string",
@@ -922,6 +1033,22 @@
           },
           {
             "type": "object",
+            "name": "license_compliance_scanning",
+            "description": "<p>Enforce any added or changed dependencies to comply with the organization's license policy.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "license_compliance_scanning"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
             "name": "file_path_restriction",
             "description": "<p>Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.</p>",
             "childParamsGroups": [
@@ -939,6 +1066,11 @@
                 "name": "parameters",
                 "description": "",
                 "childParamsGroups": [
+                  {
+                    "type": "array of strings",
+                    "name": "ignored_file_paths",
+                    "description": "<p>Files matching these patterns are allowed even when they also match a restricted path.</p>"
+                  },
                   {
                     "type": "array of strings",
                     "name": "restricted_file_paths",
@@ -1026,6 +1158,11 @@
                 "name": "parameters",
                 "description": "",
                 "childParamsGroups": [
+                  {
+                    "type": "array of strings",
+                    "name": "ignored_file_paths",
+                    "description": "<p>Files matching these patterns may exceed the maximum size.</p>"
+                  },
                   {
                     "type": "integer",
                     "name": "max_file_size",
@@ -1426,10 +1563,53 @@
                     "isRequired": true
                   },
                   {
+                    "type": "object",
+                    "name": "dismissal_restriction",
+                    "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                    "childParamsGroups": [
+                      {
+                        "type": "array of objects",
+                        "name": "allowed_actors",
+                        "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                        "childParamsGroups": [
+                          {
+                            "type": "integer",
+                            "name": "id",
+                            "description": "<p>ID of the actor that can dismiss reviews.</p>",
+                            "isRequired": true
+                          },
+                          {
+                            "type": "string",
+                            "name": "type",
+                            "description": "<p>The type of the actor</p>",
+                            "isRequired": true,
+                            "enum": [
+                              "User",
+                              "Team",
+                              "IntegrationInstallation",
+                              "RepositoryRole"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "enabled",
+                        "description": "<p>Whether to restrict review dismissal to specific actors.</p>",
+                        "isRequired": true
+                      }
+                    ]
+                  },
+                  {
                     "type": "boolean",
                     "name": "require_code_owner_review",
                     "description": "<p>Require an approving review in pull requests that modify files that have a designated code owner.</p>",
                     "isRequired": true
+                  },
+                  {
+                    "type": "boolean",
+                    "name": "require_extra_approval_for_unattributed_changes",
+                    "description": "<p>When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required.</p>"
                   },
                   {
                     "type": "boolean",
@@ -1452,7 +1632,7 @@
                   {
                     "type": "array of objects",
                     "name": "required_reviewers",
-                    "description": "<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\n<code>required_reviewers</code> is in beta and subject to change.</p>\n</div>\n<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
+                    "description": "<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
                     "childParamsGroups": [
                       {
                         "type": "array of strings",
@@ -1941,8 +2121,76 @@
           },
           {
             "type": "object",
+            "name": "code_quality",
+            "description": "<p>Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "code_quality"
+                ]
+              },
+              {
+                "type": "object",
+                "name": "parameters",
+                "description": "",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "severity",
+                    "description": "<p>The lowest severity level at which code quality reviews need to be resolved before commits can be merged.</p>",
+                    "isRequired": true,
+                    "enum": [
+                      "errors",
+                      "warnings",
+                      "notes",
+                      "all"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "code_coverage",
+            "description": "<p>Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "code_coverage"
+                ]
+              },
+              {
+                "type": "object",
+                "name": "parameters",
+                "description": "",
+                "childParamsGroups": [
+                  {
+                    "type": "number",
+                    "name": "max_coverage_drop",
+                    "description": "<p>The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.</p>"
+                  },
+                  {
+                    "type": "number",
+                    "name": "minimum_coverage",
+                    "description": "<p>The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.</p>"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
             "name": "copilot_code_review",
-            "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.</p>",
+            "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.</p>",
             "childParamsGroups": [
               {
                 "type": "string",
@@ -1974,6 +2222,22 @@
           },
           {
             "type": "object",
+            "name": "license_compliance_scanning",
+            "description": "<p>Enforce any added or changed dependencies to comply with the organization's license policy.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "license_compliance_scanning"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
             "name": "file_path_restriction",
             "description": "<p>Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.</p>",
             "childParamsGroups": [
@@ -1991,6 +2255,11 @@
                 "name": "parameters",
                 "description": "",
                 "childParamsGroups": [
+                  {
+                    "type": "array of strings",
+                    "name": "ignored_file_paths",
+                    "description": "<p>Files matching these patterns are allowed even when they also match a restricted path.</p>"
+                  },
                   {
                     "type": "array of strings",
                     "name": "restricted_file_paths",
@@ -2078,6 +2347,11 @@
                 "name": "parameters",
                 "description": "",
                 "childParamsGroups": [
+                  {
+                    "type": "array of strings",
+                    "name": "ignored_file_paths",
+                    "description": "<p>Files matching these patterns may exceed the maximum size.</p>"
+                  },
                   {
                     "type": "integer",
                     "name": "max_file_size",
@@ -2478,10 +2752,53 @@
                     "isRequired": true
                   },
                   {
+                    "type": "object",
+                    "name": "dismissal_restriction",
+                    "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                    "childParamsGroups": [
+                      {
+                        "type": "array of objects",
+                        "name": "allowed_actors",
+                        "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                        "childParamsGroups": [
+                          {
+                            "type": "integer",
+                            "name": "id",
+                            "description": "<p>ID of the actor that can dismiss reviews.</p>",
+                            "isRequired": true
+                          },
+                          {
+                            "type": "string",
+                            "name": "type",
+                            "description": "<p>The type of the actor</p>",
+                            "isRequired": true,
+                            "enum": [
+                              "User",
+                              "Team",
+                              "IntegrationInstallation",
+                              "RepositoryRole"
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "enabled",
+                        "description": "<p>Whether to restrict review dismissal to specific actors.</p>",
+                        "isRequired": true
+                      }
+                    ]
+                  },
+                  {
                     "type": "boolean",
                     "name": "require_code_owner_review",
                     "description": "<p>Require an approving review in pull requests that modify files that have a designated code owner.</p>",
                     "isRequired": true
+                  },
+                  {
+                    "type": "boolean",
+                    "name": "require_extra_approval_for_unattributed_changes",
+                    "description": "<p>When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required.</p>"
                   },
                   {
                     "type": "boolean",
@@ -2504,7 +2821,7 @@
                   {
                     "type": "array of objects",
                     "name": "required_reviewers",
-                    "description": "<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\n<code>required_reviewers</code> is in beta and subject to change.</p>\n</div>\n<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
+                    "description": "<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
                     "childParamsGroups": [
                       {
                         "type": "array of strings",
@@ -2993,8 +3310,76 @@
           },
           {
             "type": "object",
+            "name": "code_quality",
+            "description": "<p>Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "code_quality"
+                ]
+              },
+              {
+                "type": "object",
+                "name": "parameters",
+                "description": "",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "severity",
+                    "description": "<p>The lowest severity level at which code quality reviews need to be resolved before commits can be merged.</p>",
+                    "isRequired": true,
+                    "enum": [
+                      "errors",
+                      "warnings",
+                      "notes",
+                      "all"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "code_coverage",
+            "description": "<p>Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "code_coverage"
+                ]
+              },
+              {
+                "type": "object",
+                "name": "parameters",
+                "description": "",
+                "childParamsGroups": [
+                  {
+                    "type": "number",
+                    "name": "max_coverage_drop",
+                    "description": "<p>The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.</p>"
+                  },
+                  {
+                    "type": "number",
+                    "name": "minimum_coverage",
+                    "description": "<p>The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.</p>"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
             "name": "copilot_code_review",
-            "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.</p>",
+            "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.</p>",
             "childParamsGroups": [
               {
                 "type": "string",
@@ -3026,6 +3411,22 @@
           },
           {
             "type": "object",
+            "name": "license_compliance_scanning",
+            "description": "<p>Enforce any added or changed dependencies to comply with the organization's license policy.</p>",
+            "childParamsGroups": [
+              {
+                "type": "string",
+                "name": "type",
+                "description": "",
+                "isRequired": true,
+                "enum": [
+                  "license_compliance_scanning"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
             "name": "file_path_restriction",
             "description": "<p>Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.</p>",
             "childParamsGroups": [
@@ -3043,6 +3444,11 @@
                 "name": "parameters",
                 "description": "",
                 "childParamsGroups": [
+                  {
+                    "type": "array of strings",
+                    "name": "ignored_file_paths",
+                    "description": "<p>Files matching these patterns are allowed even when they also match a restricted path.</p>"
+                  },
                   {
                     "type": "array of strings",
                     "name": "restricted_file_paths",
@@ -3130,6 +3536,11 @@
                 "name": "parameters",
                 "description": "",
                 "childParamsGroups": [
+                  {
+                    "type": "array of strings",
+                    "name": "ignored_file_paths",
+                    "description": "<p>Files matching these patterns may exceed the maximum size.</p>"
+                  },
                   {
                     "type": "integer",
                     "name": "max_file_size",
@@ -3557,10 +3968,53 @@
                         "isRequired": true
                       },
                       {
+                        "type": "object",
+                        "name": "dismissal_restriction",
+                        "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                        "childParamsGroups": [
+                          {
+                            "type": "array of objects",
+                            "name": "allowed_actors",
+                            "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                            "childParamsGroups": [
+                              {
+                                "type": "integer",
+                                "name": "id",
+                                "description": "<p>ID of the actor that can dismiss reviews.</p>",
+                                "isRequired": true
+                              },
+                              {
+                                "type": "string",
+                                "name": "type",
+                                "description": "<p>The type of the actor</p>",
+                                "isRequired": true,
+                                "enum": [
+                                  "User",
+                                  "Team",
+                                  "IntegrationInstallation",
+                                  "RepositoryRole"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "enabled",
+                            "description": "<p>Whether to restrict review dismissal to specific actors.</p>",
+                            "isRequired": true
+                          }
+                        ]
+                      },
+                      {
                         "type": "boolean",
                         "name": "require_code_owner_review",
                         "description": "<p>Require an approving review in pull requests that modify files that have a designated code owner.</p>",
                         "isRequired": true
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "require_extra_approval_for_unattributed_changes",
+                        "description": "<p>When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required.</p>"
                       },
                       {
                         "type": "boolean",
@@ -3583,7 +4037,7 @@
                       {
                         "type": "array of objects",
                         "name": "required_reviewers",
-                        "description": "<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\n<code>required_reviewers</code> is in beta and subject to change.</p>\n</div>\n<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
+                        "description": "<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
                         "childParamsGroups": [
                           {
                             "type": "array of strings",
@@ -4072,8 +4526,76 @@
               },
               {
                 "type": "object",
+                "name": "code_quality",
+                "description": "<p>Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.</p>",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "type",
+                    "description": "",
+                    "isRequired": true,
+                    "enum": [
+                      "code_quality"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "parameters",
+                    "description": "",
+                    "childParamsGroups": [
+                      {
+                        "type": "string",
+                        "name": "severity",
+                        "description": "<p>The lowest severity level at which code quality reviews need to be resolved before commits can be merged.</p>",
+                        "isRequired": true,
+                        "enum": [
+                          "errors",
+                          "warnings",
+                          "notes",
+                          "all"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "code_coverage",
+                "description": "<p>Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.</p>",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "type",
+                    "description": "",
+                    "isRequired": true,
+                    "enum": [
+                      "code_coverage"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "parameters",
+                    "description": "",
+                    "childParamsGroups": [
+                      {
+                        "type": "number",
+                        "name": "max_coverage_drop",
+                        "description": "<p>The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.</p>"
+                      },
+                      {
+                        "type": "number",
+                        "name": "minimum_coverage",
+                        "description": "<p>The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.</p>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
                 "name": "copilot_code_review",
-                "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.</p>",
+                "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.</p>",
                 "childParamsGroups": [
                   {
                     "type": "string",
@@ -4105,6 +4627,22 @@
               },
               {
                 "type": "object",
+                "name": "license_compliance_scanning",
+                "description": "<p>Enforce any added or changed dependencies to comply with the organization's license policy.</p>",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "type",
+                    "description": "",
+                    "isRequired": true,
+                    "enum": [
+                      "license_compliance_scanning"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
                 "name": "file_path_restriction",
                 "description": "<p>Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.</p>",
                 "childParamsGroups": [
@@ -4122,6 +4660,11 @@
                     "name": "parameters",
                     "description": "",
                     "childParamsGroups": [
+                      {
+                        "type": "array of strings",
+                        "name": "ignored_file_paths",
+                        "description": "<p>Files matching these patterns are allowed even when they also match a restricted path.</p>"
+                      },
                       {
                         "type": "array of strings",
                         "name": "restricted_file_paths",
@@ -4209,6 +4752,11 @@
                     "name": "parameters",
                     "description": "",
                     "childParamsGroups": [
+                      {
+                        "type": "array of strings",
+                        "name": "ignored_file_paths",
+                        "description": "<p>Files matching these patterns may exceed the maximum size.</p>"
+                      },
                       {
                         "type": "integer",
                         "name": "max_file_size",
@@ -4454,10 +5002,53 @@
                         "isRequired": true
                       },
                       {
+                        "type": "object",
+                        "name": "dismissal_restriction",
+                        "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                        "childParamsGroups": [
+                          {
+                            "type": "array of objects",
+                            "name": "allowed_actors",
+                            "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                            "childParamsGroups": [
+                              {
+                                "type": "integer",
+                                "name": "id",
+                                "description": "<p>ID of the actor that can dismiss reviews.</p>",
+                                "isRequired": true
+                              },
+                              {
+                                "type": "string",
+                                "name": "type",
+                                "description": "<p>The type of the actor</p>",
+                                "isRequired": true,
+                                "enum": [
+                                  "User",
+                                  "Team",
+                                  "IntegrationInstallation",
+                                  "RepositoryRole"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "enabled",
+                            "description": "<p>Whether to restrict review dismissal to specific actors.</p>",
+                            "isRequired": true
+                          }
+                        ]
+                      },
+                      {
                         "type": "boolean",
                         "name": "require_code_owner_review",
                         "description": "<p>Require an approving review in pull requests that modify files that have a designated code owner.</p>",
                         "isRequired": true
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "require_extra_approval_for_unattributed_changes",
+                        "description": "<p>When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required.</p>"
                       },
                       {
                         "type": "boolean",
@@ -4480,7 +5071,7 @@
                       {
                         "type": "array of objects",
                         "name": "required_reviewers",
-                        "description": "<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\n<code>required_reviewers</code> is in beta and subject to change.</p>\n</div>\n<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
+                        "description": "<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
                         "childParamsGroups": [
                           {
                             "type": "array of strings",
@@ -4969,8 +5560,76 @@
               },
               {
                 "type": "object",
+                "name": "code_quality",
+                "description": "<p>Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.</p>",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "type",
+                    "description": "",
+                    "isRequired": true,
+                    "enum": [
+                      "code_quality"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "parameters",
+                    "description": "",
+                    "childParamsGroups": [
+                      {
+                        "type": "string",
+                        "name": "severity",
+                        "description": "<p>The lowest severity level at which code quality reviews need to be resolved before commits can be merged.</p>",
+                        "isRequired": true,
+                        "enum": [
+                          "errors",
+                          "warnings",
+                          "notes",
+                          "all"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "code_coverage",
+                "description": "<p>Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.</p>",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "type",
+                    "description": "",
+                    "isRequired": true,
+                    "enum": [
+                      "code_coverage"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "parameters",
+                    "description": "",
+                    "childParamsGroups": [
+                      {
+                        "type": "number",
+                        "name": "max_coverage_drop",
+                        "description": "<p>The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.</p>"
+                      },
+                      {
+                        "type": "number",
+                        "name": "minimum_coverage",
+                        "description": "<p>The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.</p>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
                 "name": "copilot_code_review",
-                "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.</p>",
+                "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.</p>",
                 "childParamsGroups": [
                   {
                     "type": "string",
@@ -5002,6 +5661,22 @@
               },
               {
                 "type": "object",
+                "name": "license_compliance_scanning",
+                "description": "<p>Enforce any added or changed dependencies to comply with the organization's license policy.</p>",
+                "childParamsGroups": [
+                  {
+                    "type": "string",
+                    "name": "type",
+                    "description": "",
+                    "isRequired": true,
+                    "enum": [
+                      "license_compliance_scanning"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
                 "name": "file_path_restriction",
                 "description": "<p>Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.</p>",
                 "childParamsGroups": [
@@ -5019,6 +5694,11 @@
                     "name": "parameters",
                     "description": "",
                     "childParamsGroups": [
+                      {
+                        "type": "array of strings",
+                        "name": "ignored_file_paths",
+                        "description": "<p>Files matching these patterns are allowed even when they also match a restricted path.</p>"
+                      },
                       {
                         "type": "array of strings",
                         "name": "restricted_file_paths",
@@ -5106,6 +5786,11 @@
                     "name": "parameters",
                     "description": "",
                     "childParamsGroups": [
+                      {
+                        "type": "array of strings",
+                        "name": "ignored_file_paths",
+                        "description": "<p>Files matching these patterns may exceed the maximum size.</p>"
+                      },
                       {
                         "type": "integer",
                         "name": "max_file_size",
@@ -5356,10 +6041,53 @@
                             "isRequired": true
                           },
                           {
+                            "type": "object",
+                            "name": "dismissal_restriction",
+                            "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                            "childParamsGroups": [
+                              {
+                                "type": "array of objects",
+                                "name": "allowed_actors",
+                                "description": "<p>Specify people, teams, or apps allowed to dismiss pull request reviews.</p>",
+                                "childParamsGroups": [
+                                  {
+                                    "type": "integer",
+                                    "name": "id",
+                                    "description": "<p>ID of the actor that can dismiss reviews.</p>",
+                                    "isRequired": true
+                                  },
+                                  {
+                                    "type": "string",
+                                    "name": "type",
+                                    "description": "<p>The type of the actor</p>",
+                                    "isRequired": true,
+                                    "enum": [
+                                      "User",
+                                      "Team",
+                                      "IntegrationInstallation",
+                                      "RepositoryRole"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "boolean",
+                                "name": "enabled",
+                                "description": "<p>Whether to restrict review dismissal to specific actors.</p>",
+                                "isRequired": true
+                              }
+                            ]
+                          },
+                          {
                             "type": "boolean",
                             "name": "require_code_owner_review",
                             "description": "<p>Require an approving review in pull requests that modify files that have a designated code owner.</p>",
                             "isRequired": true
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "require_extra_approval_for_unattributed_changes",
+                            "description": "<p>When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required.</p>"
                           },
                           {
                             "type": "boolean",
@@ -5382,7 +6110,7 @@
                           {
                             "type": "array of objects",
                             "name": "required_reviewers",
-                            "description": "<div class=\"ghd-alert ghd-alert-accent\" data-container=\"alert\"><p class=\"ghd-alert-title\"><svg version=\"1.1\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" class=\"octicon mr-2\" aria-hidden><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p>\n<p>\n<code>required_reviewers</code> is in beta and subject to change.</p>\n</div>\n<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
+                            "description": "<p>A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.</p>",
                             "childParamsGroups": [
                               {
                                 "type": "array of strings",
@@ -5871,8 +6599,76 @@
                   },
                   {
                     "type": "object",
+                    "name": "code_quality",
+                    "description": "<p>Choose which severity levels of code quality results should block pull request merges. When configured, a code quality analysis must be done on the pull request before the changes can be merged.</p>",
+                    "childParamsGroups": [
+                      {
+                        "type": "string",
+                        "name": "type",
+                        "description": "",
+                        "isRequired": true,
+                        "enum": [
+                          "code_quality"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "parameters",
+                        "description": "",
+                        "childParamsGroups": [
+                          {
+                            "type": "string",
+                            "name": "severity",
+                            "description": "<p>The lowest severity level at which code quality reviews need to be resolved before commits can be merged.</p>",
+                            "isRequired": true,
+                            "enum": [
+                              "errors",
+                              "warnings",
+                              "notes",
+                              "all"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "code_coverage",
+                    "description": "<p>Enforce minimum line coverage thresholds on pull requests. This rule evaluates uploaded coverage data but does not wait for coverage uploads. To ensure coverage is evaluated before merging, make each status check associated with a coverage upload a required status check.</p>",
+                    "childParamsGroups": [
+                      {
+                        "type": "string",
+                        "name": "type",
+                        "description": "",
+                        "isRequired": true,
+                        "enum": [
+                          "code_coverage"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "parameters",
+                        "description": "",
+                        "childParamsGroups": [
+                          {
+                            "type": "number",
+                            "name": "max_coverage_drop",
+                            "description": "<p>The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.</p>"
+                          },
+                          {
+                            "type": "number",
+                            "name": "minimum_coverage",
+                            "description": "<p>The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.</p>"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
                     "name": "copilot_code_review",
-                    "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.</p>",
+                    "description": "<p>Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and AI credits.</p>",
                     "childParamsGroups": [
                       {
                         "type": "string",
@@ -5904,6 +6700,22 @@
                   },
                   {
                     "type": "object",
+                    "name": "license_compliance_scanning",
+                    "description": "<p>Enforce any added or changed dependencies to comply with the organization's license policy.</p>",
+                    "childParamsGroups": [
+                      {
+                        "type": "string",
+                        "name": "type",
+                        "description": "",
+                        "isRequired": true,
+                        "enum": [
+                          "license_compliance_scanning"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
                     "name": "file_path_restriction",
                     "description": "<p>Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.</p>",
                     "childParamsGroups": [
@@ -5921,6 +6733,11 @@
                         "name": "parameters",
                         "description": "",
                         "childParamsGroups": [
+                          {
+                            "type": "array of strings",
+                            "name": "ignored_file_paths",
+                            "description": "<p>Files matching these patterns are allowed even when they also match a restricted path.</p>"
+                          },
                           {
                             "type": "array of strings",
                             "name": "restricted_file_paths",
@@ -6008,6 +6825,11 @@
                         "name": "parameters",
                         "description": "",
                         "childParamsGroups": [
+                          {
+                            "type": "array of strings",
+                            "name": "ignored_file_paths",
+                            "description": "<p>Files matching these patterns may exceed the maximum size.</p>"
+                          },
                           {
                             "type": "integer",
                             "name": "max_file_size",

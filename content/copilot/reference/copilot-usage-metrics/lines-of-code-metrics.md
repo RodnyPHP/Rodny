@@ -22,7 +22,7 @@ Lines of Code (LoC) metrics provide a directional measure of {% data variables.p
 
 You may encounter LoC metrics in:
 
-* **Code generation dashboard (enterprise and organization level)** — visualizes LoC-based user and agent activity. See [AUTOTITLE](/copilot/how-tos/administer-copilot/manage-for-enterprise/view-code-generation).
+* **Code generation dashboard (enterprise and organization level)** — visualizes LoC-based user and agent activity. See [AUTOTITLE](/copilot/how-tos/administer-copilot/view-code-generation).
 * **Exports and APIs (enterprise, organization, and user level)** — expose LoC fields such as `loc_suggested_to_add_sum`, `loc_added_sum`, and `loc_deleted_sum`. See [AUTOTITLE](/rest/copilot/copilot-usage-metrics).
 * **"Data available in {% data variables.product.prodname_copilot_short %} usage metrics" reference** — lists all dashboard and API fields derived from LoC. See [AUTOTITLE](/copilot/reference/copilot-usage-metrics/copilot-usage-metrics).
 
@@ -34,6 +34,7 @@ LoC metrics may vary across IDEs and versions. Keep the following considerations
 
 * **Coverage:** Not all IDEs and users will emit LoC telemetry until they upgrade to the required versions. Reports include the `last_known_ide_version` and `last_known_plugin_version` fields so you can monitor coverage across your enterprise.
 * **Stability:** As {% data variables.product.prodname_copilot_short %} evolves, telemetry definitions may change. Expect small shifts in data as accuracy improves over time.
+* **Comparison with editor views:** LoC metrics only include changes that the client reports through telemetry. They may not match line counts in an editor diff view.
 
 ## Version requirements
 
@@ -51,7 +52,7 @@ LoC metrics require specific minimum versions of IDEs and {% data variables.prod
 | | <ul><li>`chat_panel` (Ask, Edit, Plan, Agent)</li></ul> | 1.102.0 | 0.29.0 |
 | | <ul><li>`chat_inline`</li></ul> | 1.103.2 | 0.30.3 |
 | | <ul><li>`agent_edit`</li></ul> | 1.103.0 | 0.30.0 |
-| XCode | <ul><li>`code_completion`</li></ul> | 14.3.1 | 0.40.0 |
+| Xcode | <ul><li>`code_completion`</li></ul> | 14.3.1 | 0.40.0 |
 | | <ul><li>`chat_panel` (Ask, Edit, Plan, Agent)</li></ul> | 15.0 | 0.43.0 |
 | | <ul><li>`agent_edit`</li></ul> | 15.2 | 0.41.0 |
 

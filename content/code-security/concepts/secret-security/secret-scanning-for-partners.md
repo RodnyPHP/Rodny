@@ -16,7 +16,7 @@ category:
 
 ## About {% data variables.secret-scanning.partner_alerts %}
 
-{% data variables.product.github %} scans public repositories and public npm packages for secrets issued by specific service providers who joined our partnership program, and alerts the relevant service provider whenever a secret is detected in a commit. The service provider validates the string and then decides whether they should revoke the secret, issue a new secret, or contact you directly. Their action will depend on the associated risks to you or them. {% data reusables.secret-scanning.partner-program-link %}
+{% data variables.product.github %} scans public repositories and public npm packages for secrets issued by specific service providers who joined our partnership program, and alerts the relevant service provider whenever a secret is detected in a supported location. The service provider validates the string and then decides whether they should revoke the secret, issue a new secret, or contact you directly. Their action will depend on the associated risks to you or them. {% data reusables.secret-scanning.partner-program-link %}
 
 > [!NOTE]You cannot change the configuration of {% data variables.product.prodname_secret_scanning %} for partner patterns on public repositories.
 
@@ -30,10 +30,10 @@ The reason partner alerts are directly sent to the secret providers whenever a l
 
 ## What are the supported secrets
 
-For information about the secrets and service providers supported by push protection, see [AUTOTITLE](/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets).
+For information about the secrets and service providers supported by push protection, see [AUTOTITLE](/code-security/reference/secret-security/supported-secret-scanning-patterns).
 
 ## Further reading
 
-* [AUTOTITLE](/code-security/secret-scanning/introduction/about-secret-scanning)
-* [AUTOTITLE](/code-security/secret-scanning/introduction/supported-secret-scanning-patterns)
-* [AUTOTITLE](/code-security/secret-scanning/secret-scanning-partnership-program/secret-scanning-partner-program)
+* [AUTOTITLE](/code-security/concepts/secret-security/secret-scanning)
+* [AUTOTITLE](/code-security/reference/secret-security/supported-secret-scanning-patterns)
+* [AUTOTITLE](/code-security/tutorials/secret-scanning-partner-program)

@@ -4,7 +4,7 @@ shortTitle: Configure agent runners
 allowTitleToDifferFromFilename: true
 intro: 'Configure the {% data variables.product.prodname_actions %} runners used by {% data variables.copilot.copilot_cloud_agent %} and control whether repositories can customize the runner type.'
 permissions: Organization owners
-product: '{% data reusables.gated-features.copilot-cloud-agent %}<br><a href="https://github.com/enterprise/contact?ref_product=copilot&ref_type=engagement&ref_style=button" target="_blank" class="btn btn-primary mt-3 mr-3 no-underline"><span>Contact Sales</span> {% octicon "link-external" height:16 %}</a>'
+product: '{% data reusables.gated-features.copilot-cloud-agent %}<br><a href="https://github.com/github-copilot/purchase?ref_product=copilot&ref_type=trial&ref_style=button&utm_source=configuring-runners-cca-your-org-doc-signup-cta&utm_medium=docs&utm_campaign=universe-2026" target="_blank" class="btn btn-primary mt-3 mr-3 no-underline"><span>Sign up for {% data variables.product.prodname_copilot_short %}</span>{% octicon "link-external" height:16 %}</a>'
 versions:
   feature: copilot
 contentType: how-tos
@@ -14,9 +14,11 @@ category:
 
 ## About organization-level runner controls
 
-By default, {% data variables.copilot.copilot_cloud_agent %} runs on a standard {% data variables.product.prodname_dotcom %}-hosted {% data variables.product.prodname_actions %} runner (`ubuntu-latest`). As an organization owner, you can change the default runner type for all repositories in your organization, and choose whether individual repositories are allowed to override this default.
+{% data reusables.copilot.cloud-agent.applies-only-on-actions %}
 
-This is useful if your organization requires all {% data variables.copilot.copilot_cloud_agent %} sessions to run on specific runners—for example, to use larger runners for better performance, or to use self-hosted runners that have access to internal resources.
+By default, {% data variables.copilot.copilot_cloud_agent %} sessions that run on {% data variables.product.prodname_actions %} use a standard {% data variables.product.prodname_dotcom %}-hosted runner (`ubuntu-latest`). As an organization owner, you can change the default runner type for all repositories in your organization, and choose whether individual repositories are allowed to override this default.
+
+This is useful if your organization requires all {% data variables.copilot.copilot_cloud_agent %} sessions that run on {% data variables.product.prodname_actions %} to use specific runners—for example, to use larger runners for better performance, or to use self-hosted runners that have access to internal resources.
 
 You can configure:
 
@@ -42,11 +44,11 @@ By default, repositories can override the organization-level runner configuratio
 {% data reusables.profile.org_settings %}
 {% data reusables.copilot.cloud-agent-settings %}
 1. Under "Allow repositories to customize the runner type," toggle the setting to enable or disable repository-level customization.
-   * When enabled, repositories can override the default runner by setting the `runs-on` field in the `copilot-setup-steps` job of `copilot-setup-steps.yml`. See [AUTOTITLE](/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-environment#configure-the-runner).
+   * When enabled, repositories can override the default runner by setting the `runs-on` field in the `copilot-setup-steps` job of `copilot-setup-steps.yml`. See [AUTOTITLE](/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment).
    * When disabled, all repositories in your organization will use the organization-level runner type.
 1. Click **Save**.
 
 ## Further reading
 
-* [AUTOTITLE](/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-environment)
+* [AUTOTITLE](/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment)
 * [AUTOTITLE](/copilot/how-tos/administer-copilot/manage-for-organization/add-copilot-cloud-agent)
